@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://nnfpru717knn"]
+
+[ext_resource type="Script" uid="uid://cmv1t80kq8ofj" path="res://scripts/ui/pipeline_test.gd" id="1_f6qac"]
+[ext_resource type="PackedScene" uid="uid://brbovcottvq6e" path="res://scenes/ui/pipeline_bar.tscn" id="2_eg733"]
+
+[node name="PipelineTest" type="Control" unique_id=1959165423]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_f6qac")
+
+[node name="StartButton" type="Button" parent="." unique_id=1488088191]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 200.0
+offset_right = 50.0
+offset_bottom = 200.0
+text = "Pipeline Başlat"
+
+[node name="StopButton" type="Button" parent="." unique_id=2116818842]
+layout_mode = 0
+offset_left = 250.0
+offset_top = 200.0
+offset_right = 250.0
+offset_bottom = 200.0
+text = "Durdur"
+
+[node name="LogLabel" type="Label" parent="." unique_id=39340689]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 300.0
+offset_right = 50.0
+offset_bottom = 300.0
+text = "Bekliyor..."
+
+[node name="PipelineBar" parent="." unique_id=1905566137 instance=ExtResource("2_eg733")]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 100.0
+offset_right = 620.0
+offset_bottom = 200.0

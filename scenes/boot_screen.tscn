@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://w4al1qf5tu8e"]
+
+[ext_resource type="Script" uid="uid://x2bltqcrs878" path="res://scripts/boot_screen.gd" id="1_nip3r"]
+[ext_resource type="PackedScene" uid="uid://dje8xywmd3xwl" path="res://scenes/ui/hud_menu_button.tscn" id="2_ywjs5"]
+
+[node name="BootScreen" type="Control" unique_id=1878554586]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_nip3r")
+
+[node name="BgRect" type="ColorRect" parent="." unique_id=2046490384]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.051, 0.067, 0.11, 1)
+
+[node name="LogoLabel" type="Label" parent="." unique_id=1063019222]
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_top = 100.0
+offset_right = 150.0
+offset_bottom = 200.0
+text = "⚗️ AetherScript"
+horizontal_alignment = 1
+
+[node name="SubtitleLabel" type="Label" parent="." unique_id=1715939351]
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_top = 200.0
+offset_right = 150.0
+offset_bottom = 250.0
+text = "The Alchemical Compiler"
+horizontal_alignment = 1
+
+[node name="LoadingBar" type="ProgressBar" parent="." unique_id=1218916874]
+custom_minimum_size = Vector2(300, 20)
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -120.0
+offset_right = 150.0
+offset_bottom = -100.0
+max_value = 1.0
+
+[node name="StatusLabel" type="Label" parent="." unique_id=1782036499]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -90.0
+offset_right = 150.0
+offset_bottom = -60.0
+text = "Sistem yükleniyor..."
+horizontal_alignment = 1
+
+[node name="HudMenuButton" parent="." unique_id=1697492862 instance=ExtResource("2_ywjs5")]
+layout_mode = 0

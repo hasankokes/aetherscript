@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://yacw1aq21kbm"]
+
+[ext_resource type="Script" uid="uid://cjgxivwnvixnf" path="res://scripts/combat/hit_effect.gd" id="1_g35io"]
+
+[node name="HitEffect" type="Node2D" unique_id=201358079]
+script = ExtResource("1_g35io")
+
+[node name="Particles" type="GPUParticles2D" parent="." unique_id=1330908634]
+emitting = false
+
+[node name="FlashRect" type="ColorRect" parent="." unique_id=1844239269]
+visible = false
+custom_minimum_size = Vector2(100, 100)
+offset_left = -50.0
+offset_top = -50.0

@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dj3v6r43ycvi3"]
+
+[ext_resource type="Script" uid="uid://d2tdlyl7hsd2l" path="res://scripts/ui/daily_challenge_panel.gd" id="1_rh6mv"]
+
+[node name="DailyChallengePanel" type="PanelContainer" unique_id=826219642]
+script = ExtResource("1_rh6mv")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=74883620]
+layout_mode = 2
+
+[node name="HeaderLabel" type="Label" parent="VBoxContainer" unique_id=1371846810]
+layout_mode = 2
+text = "📅 Günlük Zorluk"
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer" unique_id=794766316]
+layout_mode = 2
+
+[node name="DescLabel" type="Label" parent="VBoxContainer" unique_id=1541171756]
+layout_mode = 2
+
+[node name="RewardLabel" type="Label" parent="VBoxContainer" unique_id=794981532]
+layout_mode = 2
+
+[node name="TimerLabel" type="Label" parent="VBoxContainer" unique_id=911834851]
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="VBoxContainer" unique_id=1426000340]
+layout_mode = 2
+text = "Zorluğu Başlat!"
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]

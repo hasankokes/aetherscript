@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cxlq08m8dmodb"]
+
+[ext_resource type="Script" uid="uid://dqe1gk4worrlu" path="res://scripts/ui/golem_hpbar.gd" id="1_bv8ha"]
+
+[node name="GolemHPBar" type="HBoxContainer" unique_id=736034907]
+script = ExtResource("1_bv8ha")
+
+[node name="HPProgressBar" type="ProgressBar" parent="." unique_id=18445278]
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+value = 100.0
+
+[node name="HPLabel" type="Label" parent="." unique_id=334185116]
+custom_minimum_size = Vector2(100, 20)
+layout_mode = 2
+text = "100 / 100"
+vertical_alignment = 1
+
+[node name="ComboLabel" type="Label" parent="." unique_id=969187253]
+visible = false
+custom_minimum_size = Vector2(120, 20)
+layout_mode = 2
+vertical_alignment = 1

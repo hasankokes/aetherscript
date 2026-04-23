@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dje8xywmd3xwl"]
+
+[ext_resource type="Script" uid="uid://dksp66075np5g" path="res://scripts/ui/hud_menu_button.gd" id="1_nefw7"]
+
+[node name="HudMenuButton" type="Button" unique_id=1697492862]
+script = ExtResource("1_nefw7")
+
+[node name="HudMenuButton" type="Button" parent="." unique_id=1229820735]
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -54.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 44.0
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

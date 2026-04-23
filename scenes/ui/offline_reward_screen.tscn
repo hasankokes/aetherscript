@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://dbg1pv4j0neip"]
+
+[ext_resource type="Script" uid="uid://cv81ogw1snsbj" path="res://scripts/ui/offline_reward_screen.gd" id="1_ewfa0"]
+
+[node name="OfflineRewardScreen" type="Control" unique_id=1780642029]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ewfa0")
+
+[node name="BgDim" type="ColorRect" parent="." unique_id=1302774135]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.6)
+
+[node name="Panel" type="PanelContainer" parent="." unique_id=753859214]
+custom_minimum_size = Vector2(300, 400)
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -200.0
+offset_right = 150.0
+offset_bottom = 200.0
+
+[node name="TitleLabel" type="Label" parent="Panel" unique_id=805892737]
+layout_mode = 2
+text = "⚗️ Golem Çalışmaya Devam Etti!"
+
+[node name="TimeLabel" type="Label" parent="Panel" unique_id=269205728]
+layout_mode = 2
+
+[node name="RewardContainer" type="VBoxContainer" parent="Panel" unique_id=927503118]
+layout_mode = 2
+
+[node name="EfficiencyLabel" type="Label" parent="Panel" unique_id=34120739]
+layout_mode = 2
+
+[node name="ClaimButton" type="Button" parent="Panel" unique_id=331809475]
+layout_mode = 2
+text = "Ödülü Al!"

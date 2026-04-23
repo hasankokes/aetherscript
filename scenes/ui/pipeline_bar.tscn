@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://brbovcottvq6e"]
+
+[ext_resource type="Script" uid="uid://b0gonq2bnf21s" path="res://scripts/ui/pipeline_bar.gd" id="1_kci5q"]
+[ext_resource type="Script" uid="uid://dpox0k7vxh5ox" path="res://scripts/ui/instruction_pointer.gd" id="2_4ee66"]
+
+[node name="PipelineBar" type="VBoxContainer" unique_id=1905566137]
+script = ExtResource("1_kci5q")
+
+[node name="SlotsContainer" type="HBoxContainer" parent="." unique_id=917359252]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PointerContainer" type="Control" parent="." unique_id=145121356]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="InstructionPointer" type="Node2D" parent="PointerContainer" unique_id=1107006941]
+script = ExtResource("2_4ee66")
+
+[node name="PointerLine" type="ColorRect" parent="PointerContainer/InstructionPointer" unique_id=1991639794]
+custom_minimum_size = Vector2(4, 20)
+offset_right = 4.0
+offset_bottom = 20.0
+
+[node name="PointerHead" type="Polygon2D" parent="PointerContainer/InstructionPointer" unique_id=814748206]
+polygon = PackedVector2Array(-4, 20, 8, 20, 2, 10)
+
+[node name="PointerGlow" type="PointLight2D" parent="PointerContainer/InstructionPointer" unique_id=1923682011]

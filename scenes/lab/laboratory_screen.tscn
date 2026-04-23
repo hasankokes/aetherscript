@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://cb7x1ffiftpq4"]
+
+[ext_resource type="Script" uid="uid://53lw2aqf130i" path="res://scripts/lab/laboratory_screen.gd" id="1_jksaa"]
+[ext_resource type="PackedScene" uid="uid://brbovcottvq6e" path="res://scenes/ui/pipeline_bar.tscn" id="2_gim5q"]
+[ext_resource type="PackedScene" uid="uid://blsltkd6ln4wd" path="res://scenes/ui/mastery_panel.tscn" id="2_s3tbe"]
+[ext_resource type="PackedScene" uid="uid://dj3v6r43ycvi3" path="res://scenes/ui/daily_challenge_panel.tscn" id="3_3b4bs"]
+[ext_resource type="PackedScene" uid="uid://dje8xywmd3xwl" path="res://scenes/ui/hud_menu_button.tscn" id="4_emcnm"]
+
+[node name="LaboratoryScreen" type="Control" unique_id=595323939]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_jksaa")
+
+[node name="TabContainer" type="TabContainer" parent="." unique_id=1389043643]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 0.65
+current_tab = 0
+
+[node name="HardwareTab" type="VBoxContainer" parent="TabContainer" unique_id=1493357697]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+metadata/_tab_index = 0
+
+[node name="UpgradeList" type="VBoxContainer" parent="TabContainer/HardwareTab" unique_id=1566829607]
+layout_mode = 2
+
+[node name="CardsTab" type="VBoxContainer" parent="TabContainer" unique_id=1172382446]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+metadata/_tab_index = 1
+
+[node name="CardGrid" type="GridContainer" parent="TabContainer/CardsTab" unique_id=2116593887]
+layout_mode = 2
+columns = 2
+
+[node name="ResourceTab" type="VBoxContainer" parent="TabContainer" unique_id=1492481668]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+metadata/_tab_index = 2
+
+[node name="ResourceList" type="VBoxContainer" parent="TabContainer/ResourceTab" unique_id=2029294193]
+layout_mode = 2
+
+[node name="MasteryTab" type="ScrollContainer" parent="TabContainer" unique_id=1870948709]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="MasteryPanel" parent="TabContainer/MasteryTab" unique_id=150801474 instance=ExtResource("2_s3tbe")]
+layout_mode = 2
+
+[node name="DailyTab" type="ScrollContainer" parent="TabContainer" unique_id=521366014]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 4
+
+[node name="DailyChallengePanel" parent="TabContainer/DailyTab" unique_id=826219642 instance=ExtResource("3_3b4bs")]
+layout_mode = 2
+
+[node name="RunButton" type="Button" parent="." unique_id=1002157284]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 550.0
+offset_right = 200.0
+offset_bottom = 550.0
+text = "Zindana Gonder!"
+
+[node name="SaveLabel" type="Label" parent="." unique_id=729860772]
+visible = false
+layout_mode = 0
+offset_left = 400.0
+offset_top = 555.0
+offset_right = 400.0
+offset_bottom = 555.0
+text = "Kaydedildi"
+
+[node name="PipelineBar" parent="." unique_id=1905566137 instance=ExtResource("2_gim5q")]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 450.0
+offset_right = 620.0
+offset_bottom = 530.0
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=692955772]
+layer = -1
+
+[node name="BgRect" type="ColorRect" parent="BackgroundLayer" unique_id=1834765376]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.051, 0.067, 0.11, 1)
+
+[node name="HudMenuButton" parent="." unique_id=1697492862 instance=ExtResource("4_emcnm")]
+layout_mode = 0
+
+[node name="PrestigeButton" type="Button" parent="." unique_id=162864201]
+layout_mode = 0
+
+[connection signal="pressed" from="PrestigeButton" to="." method="_on_prestige_button_pressed"]

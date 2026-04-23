@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://blsltkd6ln4wd"]
+
+[ext_resource type="Script" uid="uid://cdxpv0kv3semf" path="res://scripts/ui/mastery_panel.gd" id="1_cmel0"]
+
+[node name="MasteryPanel" type="VBoxContainer" unique_id=150801474]
+script = ExtResource("1_cmel0")
+
+[node name="TitleLabel" type="Label" parent="." unique_id=775056615]
+layout_mode = 2
+text = "Element Mastery"
+
+[node name="ElementsContainer" type="VBoxContainer" parent="." unique_id=1791350493]
+layout_mode = 2

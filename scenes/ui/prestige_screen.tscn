@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://hmdfssftb6jn"]
+
+[ext_resource type="Script" uid="uid://dqbtxmbg0odw7" path="res://scripts/ui/prestige_screen.gd" id="1_j82qs"]
+
+[node name="PrestigeScreen" type="Control" unique_id=1669447824]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_j82qs")
+
+[node name="BgDim" type="ColorRect" parent="." unique_id=549140899]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.5)
+
+[node name="Panel" type="PanelContainer" parent="." unique_id=1393787752]
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 50.0
+offset_right = 200.0
+
+[node name="TitleLabel" type="Label" parent="Panel" unique_id=550275166]
+layout_mode = 2
+text = "⚗️ Büyük Sentez"
+horizontal_alignment = 1
+
+[node name="SubtitleLabel" type="Label" parent="Panel" unique_id=1634117853]
+layout_mode = 2
+text = "Her şey sıfırlanır, bilgelik kalır."
+horizontal_alignment = 1
+
+[node name="AetherGainLabel" type="Label" parent="Panel" unique_id=1338497789]
+layout_mode = 2
+text = "+0 Saf Aether kazanacaksın"
+horizontal_alignment = 1
+
+[node name="WarningLabel" type="Label" parent="Panel" unique_id=417143337]
+layout_mode = 2
+text = "⚠️ Donanım ve kartlar sıfırlanır!"
+horizontal_alignment = 1
+
+[node name="AetherBalanceLabel" type="Label" parent="Panel" unique_id=2133723468]
+layout_mode = 2
+text = "Mevcut: 0 Saf Aether"
+horizontal_alignment = 1
+
+[node name="UpgradeList" type="VBoxContainer" parent="Panel" unique_id=129262229]
+layout_mode = 2
+
+[node name="ConfirmButton" type="Button" parent="Panel" unique_id=902735186]
+layout_mode = 2
+text = "✨ Büyük Sentez Yap"
+
+[node name="CancelButton" type="Button" parent="Panel" unique_id=2029370765]
+layout_mode = 2
+text = "Vazgeç"
+
+[connection signal="pressed" from="Panel/ConfirmButton" to="." method="_on_confirm_button_pressed"]
+[connection signal="pressed" from="Panel/CancelButton" to="." method="_on_cancel_button_pressed"]
