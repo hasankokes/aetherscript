@@ -1,60 +1,55 @@
-[gd_scene format=3 uid="uid://bt04uudteubr7"]
+[gd_scene format=3 uid="uid://djaidi6rf6doc"]
 
 [ext_resource type="Script" uid="uid://drhvuevxegktg" path="res://scripts/lab/dungeon_map_screen.gd" id="1_hux0f"]
 
-[node name="DungeonMapScreen" type="Control" unique_id=419223414]
+[node name="DungeonMapScreen" type="Control" unique_id=848781297]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_hux0f")
 
-[node name="BgRect" type="ColorRect" parent="." unique_id=358756352]
+[node name="BgRect" type="ColorRect" parent="." unique_id=2073177216]
 layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
 color = Color(0.051, 0.067, 0.125, 1)
 
-[node name="HeaderBar" type="PanelContainer" parent="." unique_id=41728816]
-custom_minimum_size = Vector2(480, 64)
+[node name="HeaderBar" type="PanelContainer" parent="." unique_id=1141310205]
+custom_minimum_size = Vector2(0, 80)
 layout_mode = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HeaderBar" unique_id=1853550171]
+[node name="HBoxContainer" type="HBoxContainer" parent="HeaderBar" unique_id=366390638]
 layout_mode = 2
 
-[node name="FloorLabel" type="Label" parent="HeaderBar/HBoxContainer" unique_id=1008632059]
+[node name="FloorLabel" type="Label" parent="HeaderBar/HBoxContainer" unique_id=1182314860]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.863, 0.647, 0.063, 1)
 theme_override_font_sizes/font_size = 24
 text = "KAT 1 / 10"
-horizontal_alignment = 1
 
-[node name="BackButton" type="Button" parent="HeaderBar/HBoxContainer" unique_id=1124234958]
+[node name="BackButton" type="Button" parent="HeaderBar/HBoxContainer" unique_id=757206063]
 unique_name_in_owner = true
 layout_mode = 2
 text = "◀ Geri"
 
-[node name="PathContainer" type="VBoxContainer" parent="." unique_id=1843339443]
+[node name="PathContainer" type="VBoxContainer" parent="." unique_id=502310747]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(480, 680)
 layout_mode = 0
-offset_top = 80.0
-offset_bottom = 80.0
-alignment = 1
+offset_top = 100.0
+offset_bottom = -100.0
 
-[node name="GolemStatusMini" type="HBoxContainer" parent="." unique_id=1556019069]
-custom_minimum_size = Vector2(480, 44)
+[node name="GolemStatusMini" type="HBoxContainer" parent="." unique_id=2032871956]
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 0
-offset_top = 810.0
-offset_bottom = 810.0
 
-[node name="HPIcon" type="Label" parent="GolemStatusMini" unique_id=667973925]
+[node name="HPIcon" type="Label" parent="GolemStatusMini" unique_id=390546415]
 layout_mode = 2
 text = "❤️"
 
-[node name="HPBar2D" type="ProgressBar" parent="GolemStatusMini" unique_id=1335699681]
-custom_minimum_size = Vector2(200, 12)
+[node name="HPBar2D" type="ProgressBar" parent="GolemStatusMini" unique_id=39352889]
+custom_minimum_size = Vector2(200, 16)
 layout_mode = 2
+size_flags_vertical = 4
 
-[node name="HPLabel2D" type="Label" parent="GolemStatusMini" unique_id=472995892]
+[node name="HPLabel2D" type="Label" parent="GolemStatusMini" unique_id=775596247]
 layout_mode = 2
 theme_override_font_sizes/font_size = 13
