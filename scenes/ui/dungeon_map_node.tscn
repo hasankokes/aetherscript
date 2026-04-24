@@ -1,9 +1,9 @@
-[gd_scene format=3 uid="uid://g46havr6tnae"]
+[gd_scene format=3 uid="uid://bqvcm7id4thnp"]
 
 [ext_resource type="Script" uid="uid://btrg3y7nldc0b" path="res://scripts/ui/dungeon_map_node.gd" id="1_kl4yr"]
 
 [node name="DungeonMapNode" type="Button" unique_id=375687980]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(120, 120)
 script = ExtResource("1_kl4yr")
 
 [node name="IconLabel" type="Label" parent="." unique_id=673367836]

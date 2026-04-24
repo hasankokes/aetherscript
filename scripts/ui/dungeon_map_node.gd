@@ -3,8 +3,8 @@ extends Button
 
 signal node_selected(node_data: DungeonNodeData)
 
-@onready var icon_label: Label      = $Content/IconLabel
-@onready var type_label: Label      = $Content/TypeLabel
+@onready var icon_label: Label      = $IconLabel
+@onready var type_label: Label      = $TypeLabel
 @onready var select_glow: ColorRect = $SelectGlow
 
 var node_data: DungeonNodeData = null
