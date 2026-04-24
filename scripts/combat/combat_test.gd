@@ -47,6 +47,14 @@ func _ready() -> void:
 		pipeline_bar.set_card_in_slot(i, cards[i])
 	
 	_update_hp_display()
+	
+	# Düşman otomatik saldırı sayacı
+	var attack_timer = Timer.new()
+	attack_timer.name = \"EnemyAttackTimer\"
+	attack_timer.wait_time = 3.0
+	attack_timer.autostart = true
+	attack_timer.timeout.connect(_on_enemy_attack_pressed)
+	add_child(attack_timer)
 
 func _update_hp_display() -> void:
 	var cm = get_node(\"/root/CombatManager\")
@@ -79,6 +87,7 @@ func _on_start_pressed() -> void:
 
 func _on_enemy_attack_pressed() -> void:
 	_combat_manager.golem_take_damage(15.0)
+	_update_hp_display()
 
 func _on_run_ended(_floor_reached: int, _loot: Dictionary) -> void:
 	var _game_manager = get_node("/root/GameManager")
