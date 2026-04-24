@@ -7,7 +7,8 @@ script = ExtResource("1_k8udy")
 
 [node name="EnemySprite" type="Polygon2D" parent="." unique_id=1868802231]
 unique_name_in_owner = true
-color = Color(0.102, 0.141, 0.196, 1)
+color = Color(1, 0.8, 0.2, 1)
+polygon = PackedVector2Array(-50, -50, 50, -50, 50, 50, -50, 50)
 
 [node name="EnemyGlow" type="PointLight2D" parent="." unique_id=1189152905]
 color = Color(0.8, 0.2, 0.2, 0.4)
