@@ -57,8 +57,11 @@ func save() -> void:
 			"tier": card.tier,
 		}
 	var file = FileAccess.open("user://save_data.json", FileAccess.WRITE)
-	file.store_string(JSON.stringify(save_data))
-	file.close()
+	if file:
+		file.store_string(JSON.stringify(save_data))
+		file.close()
+	else:
+		push_error("Could not open save_data.json for writing")
 
 func load_save() -> void:
 	if not FileAccess.file_exists("user://save_data.json"):

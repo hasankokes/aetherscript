@@ -3,8 +3,8 @@ extends Button
 
 signal node_selected(node_data: DungeonNodeData)
 
-@onready var icon_label: Label     = $IconLabel
-@onready var type_label: Label     = $TypeLabel
+@onready var icon_label: Label      = $IconLabel
+@onready var type_label: Label      = $TypeLabel
 @onready var select_glow: ColorRect = $SelectGlow
 
 var node_data: DungeonNodeData = null
@@ -19,6 +19,7 @@ const NODE_COLORS = {
 }
 
 func setup(data: DungeonNodeData) -> void:
+	if not is_node_ready(): await ready
 	node_data  = data
 	icon_label.text = data.get_icon()
 	type_label.text = data.get_display_name()
