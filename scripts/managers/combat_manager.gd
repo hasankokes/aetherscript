@@ -6,6 +6,8 @@ var golem_stats: Dictionary = {
 	"attack": 10,
 	"defense": 5
 }
+var mastery_damage_bonus: Dictionary = {}
+var mastery_crit_bonus: Dictionary = {}
 var current_enemy: Node = null
 var is_combat_active: bool = false
 

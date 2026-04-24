@@ -48,11 +48,11 @@ func _ready() -> void:
 	
 	_update_hp_display()
 	
-	# Düşman otomatik saldırı sayacı
+	# Düşman otomatik saldırı sayacı (Başlangıçta KAPALI)
 	var attack_timer = Timer.new()
 	attack_timer.name = "EnemyAttackTimer"
 	attack_timer.wait_time = 3.0
-	attack_timer.autostart = true
+	attack_timer.one_shot = false
 	attack_timer.timeout.connect(_on_enemy_attack_pressed)
 	add_child(attack_timer)
 
@@ -83,6 +83,9 @@ func _make_card(card_name: String, type: AetherEnums.CardType,
 
 func _on_start_pressed() -> void:
 	_update_hp_display()
+	var timer = get_node_or_null("EnemyAttackTimer")
+	if timer:
+		timer.start()
 	pipeline_bar.start_pipeline()
 
 func _on_enemy_attack_pressed() -> void:
