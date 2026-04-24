@@ -2,11 +2,16 @@
 
 [ext_resource type="Script" uid="uid://uar555hq0dok" path="res://scripts/combat/combat_test.gd" id="1_t2e5i"]
 [ext_resource type="PackedScene" uid="uid://brbovcottvq6e" path="res://scenes/ui/pipeline_bar.tscn" id="3_w1m1o"]
-[ext_resource type="PackedScene" uid="uid://cd1onf1c2cjm5" path="res://scenes/combat/enemy.tscn" id="4_u1xel"]
+[ext_resource type="PackedScene" uid="uid://hrpsf81eat4u" path="res://scenes/combat/enemy.tscn" id="4_u1xel"]
 
 [node name="CombatScene" type="Control" unique_id=475699465]
+custom_minimum_size = Vector2(480, 854)
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_t2e5i")
 
 [node name="CombatBackground" type="ColorRect" parent="." unique_id=1154012985]
@@ -17,8 +22,12 @@ anchor_bottom = 1.0
 color = Color(0.051, 0.067, 0.125, 1)
 
 [node name="TopHUD" type="HBoxContainer" parent="." unique_id=675873562]
-custom_minimum_size = Vector2(480, 56)
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 0
+anchor_right = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
 
 [node name="GolemHPSection" type="VBoxContainer" parent="TopHUD" unique_id=701816519]
 layout_mode = 2
@@ -55,8 +64,10 @@ layout_mode = 2
 [node name="CombatArena" type="Control" parent="." unique_id=1487736634]
 custom_minimum_size = Vector2(480, 540)
 anchors_preset = 0
-offset_top = 56.0
-offset_bottom = 56.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 120.0
+offset_bottom = -250.0
 
 [node name="EnemyInstance" type="Node2D" parent="CombatArena" unique_id=1092363009]
 unique_name_in_owner = true
@@ -67,8 +78,12 @@ unique_name_in_owner = true
 [node name="PipelineSection" type="VBoxContainer" parent="." unique_id=1402274230]
 custom_minimum_size = Vector2(480, 200)
 layout_mode = 0
-offset_top = 596.0
-offset_bottom = 596.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 620.0
+offset_right = -20.0
+offset_bottom = -20.0
 
 [node name="PipelineLabel" type="Label" parent="PipelineSection" unique_id=31786349]
 layout_mode = 2

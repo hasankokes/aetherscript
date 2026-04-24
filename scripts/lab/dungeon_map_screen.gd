@@ -2,6 +2,8 @@ extends Control
 
 @onready var floor_label: Label          = %FloorLabel
 @onready var path_container: VBoxContainer = %PathContainer
+@onready var hp_bar: ProgressBar         = %HPBar2D
+@onready var hp_label: Label             = %HPLabel2D
 
 const DUNGEON_MAP_NODE = preload("res://scenes/ui/dungeon_map_node.tscn")
 
@@ -9,8 +11,22 @@ var current_floor: int = 1
 var total_floors: int  = 10
 
 func _ready() -> void:
-    %BackButton.pressed.connect(_on_back_button_pressed)
-    _generate_map()
+	%BackButton.pressed.connect(_on_back_button_pressed)
+	
+	# Eğer oyun yeni başladıysa HP'yi doldur
+	var _combat_manager = get_node(\"/root/CombatManager\")
+	if _combat_manager.golem_hp <= 0:
+		_combat_manager.golem_hp = _combat_manager.golem_max_hp
+	
+	_update_hp()
+	_generate_map()
+
+func _update_hp() -> void:
+	var _combat_manager = get_node(\"/root/CombatManager\")
+	var hp = _combat_manager.golem_hp
+	var max_hp = _combat_manager.golem_max_hp
+	hp_bar.value = (hp / max_hp) * 100
+	hp_label.text = str(int(hp)) + \" / \" + str(int(max_hp))
 
 func _generate_map() -> void:
     for child in path_container.get_children():

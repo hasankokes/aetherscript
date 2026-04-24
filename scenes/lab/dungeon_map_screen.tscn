@@ -53,6 +53,7 @@ horizontal_scroll_mode = 0
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 30
 
 [node name="GolemStatusMini" type="HBoxContainer" parent="MainLayout" unique_id=1810305087]
 custom_minimum_size = Vector2(0, 100)
@@ -64,10 +65,12 @@ layout_mode = 2
 text = "❤️"
 
 [node name="HPBar2D" type="ProgressBar" parent="MainLayout/GolemStatusMini" unique_id=500961158]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(250, 20)
 layout_mode = 2
 size_flags_vertical = 4
 
 [node name="HPLabel2D" type="Label" parent="MainLayout/GolemStatusMini" unique_id=1726136637]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
