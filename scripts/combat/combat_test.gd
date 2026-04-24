@@ -56,7 +56,7 @@ func _on_start_pressed() -> void:
 func _on_enemy_attack_pressed() -> void:
 	_combat_manager.golem_take_damage(15.0)
 
-func _on_run_ended(floor_reached: int, _loot: Dictionary) -> void:
+func _on_run_ended(_floor_reached: int, _loot: Dictionary) -> void:
 	var _game_manager = get_node("/root/GameManager")
 	var _player_inv = get_node("/root/PlayerInventory")
 	var _event_bus = get_node("/root/EventBus")

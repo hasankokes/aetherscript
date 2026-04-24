@@ -3,16 +3,25 @@
 [ext_resource type="Script" uid="uid://drhvuevxegktg" path="res://scripts/lab/dungeon_map_screen.gd" id="1_hux0f"]
 
 [node name="DungeonMapScreen" type="Control" unique_id=1692670575]
+custom_minimum_size = Vector2(480, 854)
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_hux0f")
 
 [node name="BgRect" type="ColorRect" parent="." unique_id=745287368]
 layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
 color = Color(0.051, 0.067, 0.125, 1)
 
 [node name="MainLayout" type="VBoxContainer" parent="." unique_id=1048538446]
 layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
 
 [node name="HeaderBar" type="PanelContainer" parent="MainLayout" unique_id=942497399]
 custom_minimum_size = Vector2(0, 80)
@@ -35,6 +44,7 @@ layout_mode = 2
 text = "◀ Geri"
 
 [node name="MapScroll" type="ScrollContainer" parent="MainLayout" unique_id=1173168997]
+custom_minimum_size = Vector2(0, 600)
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
@@ -45,7 +55,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="GolemStatusMini" type="HBoxContainer" parent="MainLayout" unique_id=1810305087]
-custom_minimum_size = Vector2(0, 80)
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 alignment = 1
 
