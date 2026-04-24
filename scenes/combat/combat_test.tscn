@@ -22,12 +22,13 @@ anchor_bottom = 1.0
 color = Color(0.051, 0.067, 0.125, 1)
 
 [node name="TopHUD" type="HBoxContainer" parent="." unique_id=675873562]
-custom_minimum_size = Vector2(0, 100)
+custom_minimum_size = Vector2(440, 120)
 layout_mode = 0
 anchor_right = 1.0
 offset_left = 20.0
-offset_top = 20.0
+offset_top = 40.0
 offset_right = -20.0
+alignment = 1
 
 [node name="GolemHPSection" type="VBoxContainer" parent="TopHUD" unique_id=701816519]
 layout_mode = 2
@@ -39,7 +40,7 @@ theme_override_colors/font_color = Color(0.667, 0.667, 0.8, 1)
 theme_override_font_sizes/font_size = 11
 
 [node name="HPBar" type="ProgressBar" parent="TopHUD/GolemHPSection" unique_id=463682440]
-custom_minimum_size = Vector2(180, 14)
+custom_minimum_size = Vector2(180, 20)
 layout_mode = 2
 
 [node name="ComboLabel" type="Label" parent="TopHUD" unique_id=654533557]
@@ -58,7 +59,7 @@ theme_override_colors/font_color = Color(0.667, 0.667, 0.8, 1)
 theme_override_font_sizes/font_size = 11
 
 [node name="EnemyHPBar" type="ProgressBar" parent="TopHUD/EnemyHPSection" unique_id=1423310889]
-custom_minimum_size = Vector2(140, 14)
+custom_minimum_size = Vector2(180, 20)
 layout_mode = 2
 
 [node name="CombatArena" type="Control" parent="." unique_id=1487736634]
@@ -71,6 +72,7 @@ offset_bottom = -250.0
 
 [node name="EnemyInstance" type="Node2D" parent="CombatArena" unique_id=1092363009]
 unique_name_in_owner = true
+position = Vector2(240, 350)
 
 [node name="Enemy" parent="CombatArena/EnemyInstance" unique_id=695795933 instance=ExtResource("4_u1xel")]
 unique_name_in_owner = true

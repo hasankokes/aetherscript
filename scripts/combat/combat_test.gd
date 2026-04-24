@@ -8,6 +8,11 @@ var run_start_time: float = 0.0
 var current_floor: int = 0
 
 func _ready() -> void:
+	# Golem verilerini hazırla
+	var _combat_manager = get_node(\"/root/CombatManager\")
+	if _combat_manager.golem_stats.current_hp <= 0:
+		_combat_manager.golem_stats.current_hp = _combat_manager.golem_stats.max_hp
+	
 	run_start_time = Time.get_ticks_msec() / 1000.0
 	var _event_bus = get_node("/root/EventBus")
 	%StartButton.pressed.connect(_on_start_pressed)
