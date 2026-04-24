@@ -44,7 +44,7 @@ layout_mode = 2
 text = "◀ Geri"
 
 [node name="MapScroll" type="ScrollContainer" parent="MainLayout" unique_id=1173168997]
-custom_minimum_size = Vector2(0, 600)
+custom_minimum_size = Vector2(464, 680)
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
@@ -53,7 +53,7 @@ horizontal_scroll_mode = 0
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 30
+theme_override_constants/separation = 20
 
 [node name="GolemStatusMini" type="HBoxContainer" parent="MainLayout" unique_id=1810305087]
 custom_minimum_size = Vector2(0, 100)

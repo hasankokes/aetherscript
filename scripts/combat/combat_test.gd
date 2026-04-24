@@ -22,6 +22,7 @@ func _ready() -> void:
 	# Test düşmanı oluştur
 	var test_enemy_data = EnemyData.new()
 	test_enemy_data.enemy_name = "Test Goblin"
+	test_enemy_data.emoji = "👹"
 	test_enemy_data.base_hp = 200.0
 	test_enemy_data.base_defense = 5.0
 	var weak_elements: Array[AetherEnums.ElementType] = [AetherEnums.ElementType.FIRE]

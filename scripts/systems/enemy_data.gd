@@ -2,6 +2,7 @@ class_name EnemyData
 extends Resource
 
 @export var enemy_name: String = ""
+@export var emoji: String = "👹"
 @export var enemy_type: AetherEnums.EnemyType = AetherEnums.EnemyType.RUNNER
 @export var base_hp: float = 100.0
 @export var base_damage: float = 10.0

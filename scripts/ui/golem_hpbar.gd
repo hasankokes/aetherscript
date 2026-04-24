@@ -8,6 +8,12 @@ func _ready() -> void:
 	var _event_bus = get_node("/root/EventBus")
 	_event_bus.golem_hp_changed.connect(_on_hp_changed)
 	_event_bus.combo_counter_changed.connect(_on_combo_changed)
+	
+	# Başlangıç değerini manuel çek:
+	var cm = get_node("/root/CombatManager")
+	_on_hp_changed(
+		cm.golem_stats.current_hp,
+		cm.golem_stats.max_hp)
 
 func _on_hp_changed(current: float, maximum: float) -> void:
 	hp_bar.max_value = maximum

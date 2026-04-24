@@ -17,15 +17,20 @@ func _ready() -> void:
 	var _game_manager = get_node("/root/GameManager")
 	build_pipeline(_game_manager.get_pipeline_slot_count())
 	var _event_bus = get_node("/root/EventBus")
-	_event_bus.screen_resized.connect(_on_screen_resized)
+	if _event_bus.has_signal("screen_resized"):
+		_event_bus.screen_resized.connect(_on_screen_resized)
 
 func _on_screen_resized(new_size: Vector2) -> void:
-	# Slot genişliği = (ekran genişliği - padding) / slot sayısı
-	var available_width = new_size.x - 16.0
-	var slot_w = available_width / slots.size()
-	slot_w = clampf(slot_w, 48.0, 96.0)
+	_update_slot_sizes(new_size.x)
+
+func _update_slot_sizes(screen_w: float) -> void:
+	if slots.is_empty(): return
+	var padding = 8.0
+	var slot_w = (screen_w - padding * 2) / slots.size()
+	slot_w = clampf(slot_w, 44.0, 80.0)
 	for slot in slots:
-		slot.custom_minimum_size.x = slot_w
+		slot.custom_minimum_size = Vector2(slot_w, 72)
+		slot.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 
 func build_pipeline(slot_count: int) -> void:
 	# Mevcut slotları temizle
@@ -33,13 +38,22 @@ func build_pipeline(slot_count: int) -> void:
 		child.queue_free()
 	slots.clear()
 	
+	# Ekran genişliğine göre slot boyutu hesapla
+	var screen_w = get_viewport().get_visible_rect().size.x
+	var padding = 8.0
+	var slot_w = (screen_w - padding * 2) / slot_count
+	slot_w = clampf(slot_w, 44.0, 80.0)
+
 	for i in range(slot_count):
 		var slot: PipelineSlot = PIPELINE_SLOT_SCENE.instantiate()
 		slot.slot_index = i
+		slot.custom_minimum_size = Vector2(slot_w, 72)
+		slot.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		slots_container.add_child(slot)
 		slots.append(slot)
 
 func start_pipeline() -> void:
+	if slots.is_empty(): return
 	is_running = true
 	current_slot_index = 0
 	elapsed = 0.0
@@ -56,7 +70,7 @@ func _process(delta: float) -> void:
 	
 	elapsed += delta * pointer_speed
 	
-	# İmleç görsel pozisyonunu güncelle (slotlar arası smooth hareket)
+	# İmleç görsel pozisyonunu güncelle
 	_update_pointer_visual()
 	
 	if elapsed >= time_per_slot:
@@ -64,9 +78,10 @@ func _process(delta: float) -> void:
 		_advance_pointer()
 
 func _advance_pointer() -> void:
+	if slots.is_empty(): return
 	slots[current_slot_index].deactivate()
 	
-	# Bir sonraki dolu slotu bul (boş slotları atla)
+	# Bir sonraki dolu slotu bul
 	var next_index = current_slot_index
 	var checked = 0
 	while checked < slots.size():

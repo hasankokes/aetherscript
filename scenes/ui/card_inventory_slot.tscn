@@ -22,7 +22,3 @@ text = "FIRE Ates"
 [node name="TierLabel" type="Label" parent="." unique_id=404041723]
 layout_mode = 2
 text = "* Tier 1"
-
-[node name="SelectButton" type="Button" parent="." unique_id=374389096]
-layout_mode = 2
-text = "Pipeline'a Ekle"

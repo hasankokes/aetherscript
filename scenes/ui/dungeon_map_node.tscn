@@ -3,7 +3,8 @@
 [ext_resource type="Script" uid="uid://btrg3y7nldc0b" path="res://scripts/ui/dungeon_map_node.gd" id="1_kl4yr"]
 
 [node name="DungeonMapNode" type="Button" unique_id=375687980]
-custom_minimum_size = Vector2(120, 120)
+clip_contents = true
+custom_minimum_size = Vector2(140, 72)
 script = ExtResource("1_kl4yr")
 
 [node name="IconLabel" type="Label" parent="." unique_id=673367836]

@@ -2,9 +2,11 @@ class_name Enemy
 extends Node2D
 
 @onready var hp_bar: ProgressBar = %HPBar
-@onready var hp_label: Label = %HPLabel
+@onready var hp_label: Label = %EnemyNameLabel
 @onready var damage_label: Label = %DamageLabel
 @onready var death_effect: GPUParticles2D = %DeathEffect
+@onready var emoji_label: Label = $BodyContainer/BodyPanel/VBoxContainer/EnemyEmoji
+@onready var type_label: Label = $BodyContainer/BodyPanel/VBoxContainer/EnemyTypeLabel
 
 var stats: CombatStats = CombatStats.new()
 var enemy_data: EnemyData = null
@@ -24,6 +26,11 @@ func setup(data: EnemyData) -> void:
 	for strong_element in data.strong_against:
 		stats.element_multipliers[strong_element] = 0.5
 
+	# Görseli güncelle
+	emoji_label.text = data.emoji if data.emoji != "" else "👹"
+	type_label.text = data.enemy_name.to_upper()
+	hp_label.text = data.enemy_name
+
 	_update_hp_bar()
 
 func receive_damage(amount: float, element: AetherEnums.ElementType) -> void:
@@ -33,24 +40,15 @@ func receive_damage(amount: float, element: AetherEnums.ElementType) -> void:
 	var real_damage = stats.take_damage(amount, element)
 	_show_damage_number(real_damage, element)
 	_update_hp_bar()
-	_play_hit_effect(element)          # YENİ SATIR
 
 	_event_bus.enemy_damaged.emit(real_damage, element)
 
 	if stats.is_dead():
 		_die()
 
-func _play_hit_effect(element: AetherEnums.ElementType) -> void:
-	const HIT_EFFECT = preload("res://scenes/combat/hit_effect.tscn")
-	var effect = HIT_EFFECT.instantiate()
-	get_parent().add_child(effect)
-	effect.play(element, global_position + Vector2(
-		randf_range(-20, 20), randf_range(-20, 20)))
-
 func _update_hp_bar() -> void:
 	hp_bar.max_value = stats.max_hp
 	hp_bar.value = stats.current_hp
-	hp_label.text = "%d / %d" % [int(stats.current_hp), int(stats.max_hp)]
 
 func _show_damage_number(amount: float, element: AetherEnums.ElementType) -> void:
 	damage_label.text = "-%d" % int(amount)
@@ -75,7 +73,7 @@ func _show_damage_number(amount: float, element: AetherEnums.ElementType) -> voi
 func _die() -> void:
 	is_dead = true
 	death_effect.emitting = true
-	_event_bus.run_ended.emit(0, {})  # Placeholder, CombatManager dolduracak
+	_event_bus.run_ended.emit(0, {})
 
 	var tween = create_tween()
 	tween.tween_property(self, "modulate:a", 0.0, 0.5)

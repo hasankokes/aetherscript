@@ -12,7 +12,14 @@ var current_enemy: Node = null
 var is_combat_active: bool = false
 
 func _ready():
+	_setup_golem()
 	_reset_combat_state()
+
+func _setup_golem() -> void:
+	# Başlangıç değerlerini EventBus üzerinden yayınla
+	var eb = get_node_or_null("/root/EventBus")
+	if eb:
+		eb.golem_hp_changed.emit(golem_stats.current_hp, golem_stats.max_hp)
 
 func _reset_combat_state():
 	is_combat_active = false
@@ -26,11 +33,18 @@ func golem_take_damage(amount: float):
 	var damage = max(0, amount - golem_stats.defense)
 	golem_stats.current_hp = max(0, golem_stats.current_hp - damage)
 	
+	var eb = get_node_or_null("/root/EventBus")
+	if eb:
+		eb.golem_hp_changed.emit(golem_stats.current_hp, golem_stats.max_hp)
+	
 	if golem_stats.current_hp <= 0:
 		_on_combat_lost()
 
 func golem_heal(amount: float):
 	golem_stats.current_hp = min(golem_stats.max_hp, golem_stats.current_hp + amount)
+	var eb = get_node_or_null("/root/EventBus")
+	if eb:
+		eb.golem_hp_changed.emit(golem_stats.current_hp, golem_stats.max_hp)
 
 func enemy_take_damage(amount: float):
 	if current_enemy and current_enemy.has_method("take_damage"):
