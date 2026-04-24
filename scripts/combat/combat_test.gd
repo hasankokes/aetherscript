@@ -65,12 +65,12 @@ func _update_hp_display() -> void:
 	if hp_label:
 		hp_label.text = "GOLEM: %d/%d" % [cm.golem_stats.current_hp, cm.golem_stats.max_hp]
 	
-	if enemy:
-		%EnemyHPBar.max_value = enemy.max_hp
-		%EnemyHPBar.value = enemy.current_hp
+	if enemy and enemy.stats:
+		%EnemyHPBar.max_value = enemy.stats.max_hp
+		%EnemyHPBar.value = enemy.stats.current_hp
 		var enemy_label = %EnemyHPBar.get_parent().get_node("EnemyNameLabel")
-		if enemy_label:
-			enemy_label.text = "%s: %d/%d" % [enemy.enemy_name, enemy.current_hp, enemy.max_hp]
+		if enemy_label and enemy.enemy_data:
+			enemy_label.text = "%s: %d/%d" % [enemy.enemy_data.enemy_name, enemy.stats.current_hp, enemy.stats.max_hp]
 
 func _make_card(card_name: String, type: AetherEnums.CardType,
 				element: AetherEnums.ElementType, value: float) -> CardData:
