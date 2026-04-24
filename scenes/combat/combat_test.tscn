@@ -81,7 +81,7 @@ size_flags_vertical = 3
 
 [node name="EnemyInstance" type="Node2D" parent="MainLayout/CombatArena" unique_id=1092363009]
 unique_name_in_owner = true
-position = Vector2(240, 350)
+position = Vector2(220, 150)
 
 [node name="Enemy" parent="MainLayout/CombatArena/EnemyInstance" unique_id=695795933 instance=ExtResource("4_u1xel")]
 unique_name_in_owner = true
@@ -91,6 +91,8 @@ unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
 text = "SAVAŞI BAŞLAT"
 
 [node name="PipelineSection" type="VBoxContainer" parent="MainLayout" unique_id=1402274230]
