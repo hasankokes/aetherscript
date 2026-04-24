@@ -50,27 +50,27 @@ func _ready() -> void:
 	
 	# Düşman otomatik saldırı sayacı
 	var attack_timer = Timer.new()
-	attack_timer.name = \"EnemyAttackTimer\"
+	attack_timer.name = "EnemyAttackTimer"
 	attack_timer.wait_time = 3.0
 	attack_timer.autostart = true
 	attack_timer.timeout.connect(_on_enemy_attack_pressed)
 	add_child(attack_timer)
 
 func _update_hp_display() -> void:
-	var cm = get_node(\"/root/CombatManager\")
+	var cm = get_node("/root/CombatManager")
 	%HPBar.max_value = cm.golem_stats.max_hp
 	%HPBar.value = cm.golem_stats.current_hp
 	
-	var hp_label = %HPBar.get_parent().get_node(\"HPLabel\")
+	var hp_label = %HPBar.get_parent().get_node("HPLabel")
 	if hp_label:
-		hp_label.text = \"GOLEM: %d/%d\" % [cm.golem_stats.current_hp, cm.golem_stats.max_hp]
+		hp_label.text = "GOLEM: %d/%d" % [cm.golem_stats.current_hp, cm.golem_stats.max_hp]
 	
 	if enemy:
 		%EnemyHPBar.max_value = enemy.max_hp
 		%EnemyHPBar.value = enemy.current_hp
-		var enemy_label = %EnemyHPBar.get_parent().get_node(\"EnemyNameLabel\")
+		var enemy_label = %EnemyHPBar.get_parent().get_node("EnemyNameLabel")
 		if enemy_label:
-			enemy_label.text = \"%s: %d/%d\" % [enemy.enemy_name, enemy.current_hp, enemy.max_hp]
+			enemy_label.text = "%s: %d/%d" % [enemy.enemy_name, enemy.current_hp, enemy.max_hp]
 
 func _make_card(card_name: String, type: AetherEnums.CardType,
 				element: AetherEnums.ElementType, value: float) -> CardData:
@@ -101,7 +101,6 @@ func _on_run_ended(_floor_reached: int, _loot: Dictionary) -> void:
 
 	if _game_manager.daily_challenge_active:
 		var _daily = get_node("/root/DailyChallengeManager")
-		# Basitçe 1 katı bile geçse daily bitmiş sayalım test için
 		_daily.complete_challenge()
 		_game_manager.daily_challenge_active = false
 
@@ -112,7 +111,7 @@ func _on_run_ended(_floor_reached: int, _loot: Dictionary) -> void:
 	if randf() < 0.15:
 		_player_inv.add_resource("aether_shard", 1)
 
-	# Mastery XP — tur tamamlamak bonus verir
+	# Mastery XP
 	for element in _game_manager.mastery_levels:
 		_event_bus.mastery_xp_gained.emit(element, 5)
 
