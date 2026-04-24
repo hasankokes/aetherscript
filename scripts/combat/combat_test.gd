@@ -9,15 +9,15 @@ var current_floor: int = 0
 
 func _ready() -> void:
 	# Golem verilerini hazırla
-	var _combat_manager = get_node(\"/root/CombatManager\")
-	if _combat_manager.golem_stats.current_hp <= 0:
-		_combat_manager.golem_stats.current_hp = _combat_manager.golem_stats.max_hp
+	var cm = get_node("/root/CombatManager")
+	if cm.golem_stats.current_hp <= 0:
+		cm.golem_stats.current_hp = cm.golem_stats.max_hp
 	
 	run_start_time = Time.get_ticks_msec() / 1000.0
-	var _event_bus = get_node("/root/EventBus")
+	var eb = get_node("/root/EventBus")
 	%StartButton.pressed.connect(_on_start_pressed)
 	%EnemyAttackButton.pressed.connect(_on_enemy_attack_pressed)
-	_event_bus.run_ended.connect(_on_run_ended)
+	eb.run_ended.connect(_on_run_ended)
 
 	# Test düşmanı oluştur
 	var test_enemy_data = EnemyData.new()
@@ -28,7 +28,7 @@ func _ready() -> void:
 	test_enemy_data.weak_to = weak_elements
 
 	enemy.setup(test_enemy_data)
-	_combat_manager.register_enemy(enemy)
+	cm.register_enemy(enemy)
 
 	# Test kartlarını pipeline'a yükle
 	var cards = [
