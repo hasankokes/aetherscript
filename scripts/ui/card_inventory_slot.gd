@@ -3,11 +3,11 @@ extends PanelContainer
 
 signal card_selected(card: CardData)
 
-@onready var card_name_label: Label = $VBoxContainer/TopRow/CardNameLabel
-@onready var element_label: Label   = $VBoxContainer/TopRow/ElementLabel
-@onready var type_label: Label      = $VBoxContainer/TypeLabel
-@onready var tier_label: Label      = $VBoxContainer/TierLabel
-@onready var select_button: Button = $VBoxContainer/SelectButton
+@onready var card_name_label: Label = %CardNameLabel
+@onready var element_label: Label   = %ElementLabel
+@onready var type_label: Label      = %TypeLabel
+@onready var tier_label: Label      = %TierLabel
+@onready var select_button: Button = %SelectButton
 
 var card_data: CardData = null
 

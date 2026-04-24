@@ -1,21 +1,42 @@
-[gd_scene format=3 uid="uid://bqvcm7id4thnp"]
+[gd_scene load_steps=2 format=3]
 
-[ext_resource type="Script" uid="uid://btrg3y7nldc0b" path="res://scripts/ui/dungeon_map_node.gd" id="1_kl4yr"]
+[ext_resource type="Script" path="res://scripts/ui/dungeon_map_node.gd" id="1_script"]
 
-[node name="DungeonMapNode" type="Button" unique_id=375687980]
-clip_contents = true
-custom_minimum_size = Vector2(140, 72)
-script = ExtResource("1_kl4yr")
+[node name="DungeonMapNode" type="Button"]
+custom_minimum_size = Vector2(80, 80)
+offset_right = 80.0
+offset_bottom = 80.0
+script = ExtResource("1_script")
 
-[node name="IconLabel" type="Label" parent="." unique_id=673367836]
-layout_mode = 0
-text = "Icon"
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
 
-[node name="TypeLabel" type="Label" parent="." unique_id=2120311562]
-layout_mode = 0
-text = "Type"
+[node name="IconLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "👹"
+horizontal_alignment = 1
 
-[node name="SelectGlow" type="ColorRect" parent="." unique_id=1142296301]
+[node name="TypeLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "BATTLE"
+horizontal_alignment = 1
+
+[node name="SelectGlow" type="ColorRect" parent="."]
 visible = false
-layout_mode = 0
-color = Color(1, 1, 0, 0.3)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.2)

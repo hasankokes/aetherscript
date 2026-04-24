@@ -61,13 +61,14 @@ func _create_upgrade_definitions() -> void:
 	var upgrades_raw = [
 		["cpu_speed",    "CPU Hizi",       "Imlec daha hizli akar.",       {"iron_ore": 10},            20],
 		["ram_capacity", "RAM Kapasitesi", "Pipeline slot sayisi artar.",   {"crystal": 15, "iron_ore": 10}, 3],
-		["battery",      "Batarya (HP)",   "Golem maksimum cani artar.",    {"iron_ore": 8, "organic_core": 5}, 50],
+		["battery",      ["Batarya (HP)"],   "Golem maksimum cani artar.",    {"iron_ore": 8, "organic_core": 5}, 50],
 		["mana_capacity","Mana Kapasitesi","Mana havuzu buyur.",            {"crystal": 12},             15],
 	]
+	# Fix for battery key being an array in raw data
 	for raw in upgrades_raw:
 		var ud = UpgradeData.new()
 		ud.hardware_key  = raw[0]
-		ud.display_name  = raw[1]
+		ud.display_name  = raw[1] if typeof(raw[1]) == TYPE_STRING else raw[1][0]
 		ud.description   = raw[2]
 		ud.base_cost     = raw[3]
 		ud.max_level     = raw[4]
@@ -132,30 +133,47 @@ func _build_resource_tab() -> void:
 		resource_list.add_child(lbl)
 
 func _load_pipeline() -> void:
-	var _player_inv = get_node("/root/PlayerInventory")
-	for slot_index in _player_inv.pipeline_config:
-		var card = _player_inv.pipeline_config[slot_index]
+	# Önce tüm slotları temizle
+	var slot_count = GameManager.get_pipeline_slot_count()
+	for i in range(slot_count):
+		pipeline_bar.clear_slot(i)
+	
+	# Sonra kayıtlı konfigürasyonu yükle
+	for slot_index in PlayerInventory.pipeline_config:
+		var card = PlayerInventory.pipeline_config[slot_index]
 		pipeline_bar.set_card_in_slot(slot_index, card)
 
 func _on_card_selected_for_pipeline(card: CardData) -> void:
-	var _game_manager = get_node("/root/GameManager")
-	var _player_inv = get_node("/root/PlayerInventory")
-	var slot_count = _game_manager.get_pipeline_slot_count()
+	var slot_count = GameManager.get_pipeline_slot_count()
+	
+	# Bu kart zaten pipeline'da mı? Varsa çıkar (toggle)
 	for i in range(slot_count):
-		if not _player_inv.pipeline_config.has(i):
-			_player_inv.set_card_in_pipeline(i, card)
+		if PlayerInventory.pipeline_config.has(i):
+			if PlayerInventory.pipeline_config[i].card_name \
+			   == card.card_name \
+			   and PlayerInventory.pipeline_config[i].element \
+			   == card.element:
+				PlayerInventory.remove_card_from_pipeline(i)
+				pipeline_bar.clear_slot(i)
+				return
+	
+	# İlk boş slotu bul
+	for i in range(slot_count):
+		if not PlayerInventory.pipeline_config.has(i):
+			PlayerInventory.set_card_in_pipeline(i, card)
 			pipeline_bar.set_card_in_slot(i, card)
 			return
+	
+	# Tüm slotlar dolu
+	print("Pipeline dolu! Önce bir kartı çıkar.")
 
 func _on_upgrade_purchased(_upgrade_data: UpgradeData) -> void:
-	var _game_manager = get_node("/root/GameManager")
 	_build_hardware_tab()
 	_build_resource_tab()
 	if _upgrade_data.hardware_key == "ram_capacity":
-		pipeline_bar.build_pipeline(_game_manager.get_pipeline_slot_count())
+		pipeline_bar.build_pipeline(GameManager.get_pipeline_slot_count())
 
 func _on_run_button_pressed() -> void:
-	var _player_inv = get_node("/root/PlayerInventory")
-	_player_inv.save()
+	PlayerInventory.save()
 	get_tree().change_scene_to_file(
 		"res://scenes/lab/dungeon_map_screen.tscn")

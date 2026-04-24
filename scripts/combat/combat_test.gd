@@ -16,7 +16,6 @@ func _ready() -> void:
 	run_start_time = Time.get_ticks_msec() / 1000.0
 	var eb = get_node("/root/EventBus")
 	%StartButton.pressed.connect(_on_start_pressed)
-	%EnemyAttackButton.pressed.connect(_on_enemy_attack_pressed)
 	eb.run_ended.connect(_on_run_ended)
 
 	# Test düşmanı oluştur
@@ -62,9 +61,9 @@ func _update_hp_display() -> void:
 	%HPBar.max_value = cm.golem_stats.max_hp
 	%HPBar.value = cm.golem_stats.current_hp
 	
-	var hp_label = %HPBar.get_parent().get_node("HPLabel")
-	if hp_label:
-		hp_label.text = "GOLEM: %d/%d" % [cm.golem_stats.current_hp, cm.golem_stats.max_hp]
+	var golem_label = %HPBar.get_parent().get_node("GolemLabel")
+	if golem_label:
+		golem_label.text = "GOLEM: %d/%d" % [cm.golem_stats.current_hp, cm.golem_stats.max_hp]
 	
 	if enemy and enemy.stats:
 		%EnemyHPBar.max_value = enemy.stats.max_hp
@@ -88,6 +87,7 @@ func _on_start_pressed() -> void:
 	if timer:
 		timer.start()
 	pipeline_bar.start_pipeline()
+	%StartButton.visible = false # Başlayınca butonu gizle
 
 func _on_enemy_attack_pressed() -> void:
 	_combat_manager.golem_take_damage(15.0)

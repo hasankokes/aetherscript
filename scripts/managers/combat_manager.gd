@@ -14,10 +14,30 @@ var is_combat_active: bool = false
 func _ready():
 	_setup_golem()
 	_reset_combat_state()
+	
+	var eb = get_node_or_null("/root/EventBus")
+	if eb:
+		eb.pipeline_card_activated.connect(_on_card_activated)
+
+func _on_card_activated(card: CardData, _slot_index: int) -> void:
+	print("CombatManager: Card activated: ", card.card_name)
+	if not is_combat_active: 
+		print("CombatManager: Combat not active!")
+		return
+	
+	match card.card_type:
+		AetherEnums.CardType.ACTION:
+			enemy_take_damage(card.base_value, card.element)
+		AetherEnums.CardType.LOGIC:
+			# Basit bir mantık: Eğer can %30 altındaysa iyileştir (kart açıklamasındaki gibi)
+			if golem_stats.current_hp < golem_stats.max_hp * 0.3:
+				golem_heal(card.base_value)
 
 func _setup_golem() -> void:
 	# Başlangıç değerlerini EventBus üzerinden yayınla
 	var eb = get_node_or_null("/root/EventBus")
+	
+	await get_tree().process_frame
 	if eb:
 		eb.golem_hp_changed.emit(golem_stats.current_hp, golem_stats.max_hp)
 
@@ -46,9 +66,9 @@ func golem_heal(amount: float):
 	if eb:
 		eb.golem_hp_changed.emit(golem_stats.current_hp, golem_stats.max_hp)
 
-func enemy_take_damage(amount: float):
-	if current_enemy and current_enemy.has_method("take_damage"):
-		current_enemy.take_damage(amount)
+func enemy_take_damage(amount: float, element: AetherEnums.ElementType = AetherEnums.ElementType.NEUTRAL):
+	if current_enemy and current_enemy.has_method("receive_damage"):
+		current_enemy.receive_damage(amount, element)
 
 func _on_combat_lost():
 	var event_bus = get_node("/root/EventBus")

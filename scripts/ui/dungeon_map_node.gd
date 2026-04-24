@@ -1,30 +1,42 @@
 class_name DungeonMapNode
 extends Button
 
-signal node_selected(node_data: DungeonNodeData)
+signal node_selected(data: DungeonNodeData)
 
-@onready var icon_label: Label      = $VBoxContainer/IconLabel
-@onready var type_label: Label      = $VBoxContainer/TypeLabel
+@onready var icon_label: Label = %IconLabel
+@onready var type_label: Label = %TypeLabel
 @onready var select_glow: ColorRect = $SelectGlow
 
 var node_data: DungeonNodeData = null
 
-const NODE_COLORS = {
-	DungeonNodeData.NodeType.COMBAT:  Color(0.8, 0.2, 0.2),
-	DungeonNodeData.NodeType.ELITE:   Color(0.6, 0.1, 0.6),
-	DungeonNodeData.NodeType.SHOP:    Color(0.2, 0.7, 0.2),
-	DungeonNodeData.NodeType.MYSTERY: Color(0.3, 0.3, 0.8),
-	DungeonNodeData.NodeType.REST:    Color(0.1, 0.6, 0.6),
-	DungeonNodeData.NodeType.BOSS:    Color(0.9, 0.5, 0.0),
-}
-
 func setup(data: DungeonNodeData) -> void:
-	if not is_node_ready(): await ready
-	node_data  = data
-	icon_label.text = data.get_icon()
-	type_label.text = data.get_display_name()
-	modulate = NODE_COLORS.get(data.node_type, Color.WHITE)
-	select_glow.visible = false
+	node_data = data
+	
+	match data.node_type:
+		DungeonNodeData.NodeType.COMBAT:
+			icon_label.text = "👹"
+			type_label.text = "BATTLE"
+		DungeonNodeData.NodeType.ELITE:
+			icon_label.text = "💀"
+			type_label.text = "ELITE"
+		DungeonNodeData.NodeType.BOSS:
+			icon_label.text = "🐲"
+			type_label.text = "BOSS"
+		DungeonNodeData.NodeType.REST:
+			icon_label.text = "☕"
+			type_label.text = "REST"
+		DungeonNodeData.NodeType.SHOP:
+			icon_label.text = "💰"
+			type_label.text = "SHOP"
+		DungeonNodeData.NodeType.MYSTERY:
+			icon_label.text = "❓"
+			type_label.text = "EVENT"
+	
+	# Erişilebilirlik ve tamamlanma durumunu burada basitçe ayarla
+	# (İleride GameManager'dan kontrol edilebilir)
+	modulate = Color.WHITE
+	disabled = false
+	
 	if not pressed.is_connected(_on_pressed):
 		pressed.connect(_on_pressed)
 

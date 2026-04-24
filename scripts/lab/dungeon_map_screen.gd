@@ -32,24 +32,47 @@ func _generate_map() -> void:
 	for child in path_container.get_children():
 		child.queue_free()
 
-	floor_label.text = "Kat %d / %d" % [current_floor, total_floors]
+	floor_label.text = "KAT %d / %d" % [
+		current_floor, total_floors]
 
-	# Her katta 2-3 seçenek sun
-	for floor_num in range(current_floor, mini(current_floor + 4, total_floors + 1)):
+	# Gösterilecek kat sayısı: mevcut + 3 kat ilerisi
+	var show_from = current_floor
+	var show_to   = mini(current_floor + 3, total_floors)
+
+	for floor_num in range(show_to, show_from - 1, -1):
+		# Üstten başla: en uzak kat en üstte
 		var row = HBoxContainer.new()
-		row.alignment = BoxContainer.ALIGNMENT_CENTER
+		row.alignment  = BoxContainer.ALIGNMENT_CENTER
+		row.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		row.add_theme_constant_override("separation", 16)
 		path_container.add_child(row)
+
+		# Mevcut katı vurgula
+		var is_current = (floor_num == current_floor)
 
 		var options = _generate_floor_options(floor_num)
 		for node_data in options:
-			var map_node = DUNGEON_MAP_NODE.instantiate() as DungeonMapNode
+			var map_node = DUNGEON_MAP_NODE.instantiate() \
+				as DungeonMapNode
 			row.add_child(map_node)
 			map_node.setup(node_data)
 			map_node.node_selected.connect(_on_node_selected)
+			
+			# Mevcut kat parlasın
+			if is_current:
+				map_node.modulate = Color(1.2, 1.2, 1.2)
+			else:
+				map_node.modulate = Color(0.7, 0.7, 0.7)
 
-		# Patron katı tek seçenek
-		if floor_num % 10 == 0:
-			break
+		# Katlar arası ok (mevcut kat değilse)
+		if floor_num > show_from:
+			var arrow = Label.new()
+			arrow.text = "⬆"
+			arrow.horizontal_alignment = \
+				HORIZONTAL_ALIGNMENT_CENTER
+			arrow.add_theme_color_override(
+				"font_color", Color(0.4, 0.4, 0.6))
+			path_container.add_child(arrow)
 
 func _generate_floor_options(floor_num: int) -> Array[DungeonNodeData]:
 	var options: Array[DungeonNodeData] = []

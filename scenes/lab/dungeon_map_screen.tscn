@@ -51,9 +51,11 @@ horizontal_scroll_mode = 0
 
 [node name="PathContainer" type="VBoxContainer" parent="MainLayout/MapScroll" unique_id=79194182]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(464, 680)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 20
+size_flags_vertical = 3
+theme_override_constants/separation = 8
 
 [node name="GolemStatusMini" type="HBoxContainer" parent="MainLayout" unique_id=1810305087]
 custom_minimum_size = Vector2(0, 100)

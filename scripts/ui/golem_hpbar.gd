@@ -1,19 +1,27 @@
 extends HBoxContainer
 
-@onready var hp_bar: ProgressBar = $HPProgressBar
-@onready var hp_label: Label = $HPLabel
-@onready var combo_label: Label = $ComboLabel
+@onready var hp_bar: ProgressBar    = $HPProgressBar
+@onready var hp_label: Label        = $HPLabel
+@onready var combo_label: Label     = $ComboLabel
 
 func _ready() -> void:
-	var _event_bus = get_node("/root/EventBus")
-	_event_bus.golem_hp_changed.connect(_on_hp_changed)
-	_event_bus.combo_counter_changed.connect(_on_combo_changed)
+	EventBus.golem_hp_changed.connect(_on_hp_changed)
+	EventBus.combo_counter_changed.connect(_on_combo_changed)
+	combo_label.visible = false
 	
-	# Başlangıç değerini manuel çek:
-	var cm = get_node("/root/CombatManager")
-	_on_hp_changed(
-		cm.golem_stats.current_hp,
-		cm.golem_stats.max_hp)
+	# Bir frame bekle — tüm Autoload'lar yüklensin
+	await get_tree().process_frame
+	await get_tree().process_frame
+	
+	# Mevcut değeri doğrudan oku
+	var current = CombatManager.golem_stats.current_hp
+	var maximum = CombatManager.golem_stats.max_hp
+	
+	if maximum > 0:
+		_on_hp_changed(current, maximum)
+	else:
+		# CombatManager henüz hazır değil — setup'ı tetikle
+		CombatManager._setup_golem()
 
 func _on_hp_changed(current: float, maximum: float) -> void:
 	hp_bar.max_value = maximum
@@ -21,12 +29,14 @@ func _on_hp_changed(current: float, maximum: float) -> void:
 	hp_label.text = "%d / %d" % [int(current), int(maximum)]
 
 	# HP kritikse renk değiştir
-	if current / maximum < 0.3:
-		hp_bar.modulate = Color(1.0, 0.2, 0.2)
-	elif current / maximum < 0.6:
-		hp_bar.modulate = Color(1.0, 0.7, 0.1)
-	else:
-		hp_bar.modulate = Color(0.2, 0.9, 0.3)
+	if maximum > 0:
+		var ratio = current / maximum
+		if ratio < 0.3:
+			hp_bar.modulate = Color(1.0, 0.2, 0.2)
+		elif ratio < 0.6:
+			hp_bar.modulate = Color(1.0, 0.7, 0.1)
+		else:
+			hp_bar.modulate = Color(0.2, 0.9, 0.3)
 
 func _on_combo_changed(count: int, element: AetherEnums.ElementType) -> void:
 	if count < 2:

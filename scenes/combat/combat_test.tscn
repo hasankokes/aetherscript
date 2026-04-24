@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://uar555hq0dok" path="res://scripts/combat/combat_test.gd" id="1_t2e5i"]
 [ext_resource type="PackedScene" uid="uid://brbovcottvq6e" path="res://scenes/ui/pipeline_bar.tscn" id="3_w1m1o"]
-[ext_resource type="PackedScene" uid="uid://hrpsf81eat4u" path="res://scenes/combat/enemy.tscn" id="4_u1xel"]
+[ext_resource type="PackedScene" uid="uid://d14bxxpfxjeew" path="res://scenes/combat/enemy.tscn" id="4_u1xel"]
 
 [node name="CombatScene" type="Control" unique_id=1204983866]
 layout_mode = 3
@@ -18,14 +18,20 @@ size_flags_vertical = 3
 [node name="TopHUD" type="PanelContainer" parent="." unique_id=1895746379]
 custom_minimum_size = Vector2(480, 72)
 layout_mode = 0
+offset_bottom = 72.0
+size_flags_horizontal = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TopHUD" unique_id=647868280]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/separation = 8
+alignment = 1
 
 [node name="GolemBlock" type="VBoxContainer" parent="TopHUD/HBoxContainer" unique_id=428811599]
+custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 4
 
 [node name="GolemLabel" type="Label" parent="TopHUD/HBoxContainer/GolemBlock" unique_id=2105117386]
 layout_mode = 2
@@ -46,8 +52,10 @@ theme_override_font_sizes/font_size = 18
 horizontal_alignment = 1
 
 [node name="EnemyBlock" type="VBoxContainer" parent="TopHUD/HBoxContainer" unique_id=1219538155]
+custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 4
 
 [node name="EnemyNameLabel" type="Label" parent="TopHUD/HBoxContainer/EnemyBlock" unique_id=877807617]
 layout_mode = 2
@@ -63,31 +71,57 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="ArenaContainer" type="Control" parent="." unique_id=1347293458]
-custom_minimum_size = Vector2(480, 480)
+custom_minimum_size = Vector2(0, 400)
 anchors_preset = 0
 offset_top = 72.0
 offset_bottom = 72.0
+size_flags_vertical = 3
 
 [node name="StartButton" type="Button" parent="ArenaContainer" unique_id=1240874044]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 48)
+custom_minimum_size = Vector2(200, 44)
 layout_mode = 0
 offset_left = 140.0
-offset_top = 400.0
-offset_right = 140.0
-offset_bottom = 400.0
+offset_top = 500.0
+offset_right = 340.0
+offset_bottom = 548.0
 theme_override_font_sizes/font_size = 16
 text = "▶ Başlat"
 
-[node name="Enemy" parent="ArenaContainer" unique_id=1298573265 instance=ExtResource("4_u1xel")]
+[node name="Enemy" parent="ArenaContainer" unique_id=593482228 instance=ExtResource("4_u1xel")]
 unique_name_in_owner = true
-position = Vector2(240, 240)
+position = Vector2(240, 180)
+
+[node name="GolemPlaceholder" type="Control" parent="ArenaContainer" unique_id=1627138423]
+anchors_preset = 0
+offset_left = 240.0
+offset_top = 360.0
+offset_right = 240.0
+offset_bottom = 360.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ArenaContainer/GolemPlaceholder" unique_id=2088900521]
+layout_mode = 0
+alignment = 1
+
+[node name="GolemEmoji" type="Label" parent="ArenaContainer/GolemPlaceholder/VBoxContainer" unique_id=2035538320]
+layout_mode = 2
+theme_override_font_sizes/font_size = 52
+text = "🤖"
+horizontal_alignment = 1
+
+[node name="GolemLabel" type="Label" parent="ArenaContainer/GolemPlaceholder/VBoxContainer" unique_id=21924713]
+modulate = Color(0.53, 0.53, 0.8, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "GOLEM"
+horizontal_alignment = 1
 
 [node name="PipelineSection" type="VBoxContainer" parent="." unique_id=1032817098]
-custom_minimum_size = Vector2(480, 200)
+custom_minimum_size = Vector2(0, 200)
 layout_mode = 0
-offset_top = 654.0
-offset_bottom = 654.0
+offset_top = 620.0
+offset_right = 480.0
+offset_bottom = 820.0
 
 [node name="PipelineLabel" type="Label" parent="PipelineSection" unique_id=561951967]
 custom_minimum_size = Vector2(0, 20)

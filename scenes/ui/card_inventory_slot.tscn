@@ -1,24 +1,50 @@
-[gd_scene format=3 uid="uid://cl78x5b5hf5cr"]
+[gd_scene load_steps=2 format=3]
 
-[ext_resource type="Script" uid="uid://cmlkxc0fu6d1e" path="res://scripts/ui/card_inventory_slot.gd" id="1_mtinr"]
+[ext_resource type="Script" path="res://scripts/ui/card_inventory_slot.gd" id="1_script"]
 
-[node name="CardInventorySlot" type="PanelContainer" unique_id=330868590]
-script = ExtResource("1_mtinr")
+[node name="CardInventorySlot" type="PanelContainer"]
+custom_minimum_size = Vector2(200, 100)
+size_flags_horizontal = 3
+script = ExtResource("1_script")
 
-[node name="CardIcon" type="TextureRect" parent="." unique_id=1841505667]
-custom_minimum_size = Vector2(48, 48)
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
-expand_mode = 1
-stretch_mode = 5
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
 
-[node name="CardNameLabel" type="Label" parent="." unique_id=1735971156]
+[node name="TopRow" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
-text = "Card Name"
+size_flags_horizontal = 3
 
-[node name="ElementLabel" type="Label" parent="." unique_id=133367629]
+[node name="ElementLabel" type="Label" parent="VBoxContainer/TopRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(28, 0)
 layout_mode = 2
-text = "FIRE Ates"
+theme_override_font_sizes/font_size = 18
 
-[node name="TierLabel" type="Label" parent="." unique_id=404041723]
+[node name="CardNameLabel" type="Label" parent="VBoxContainer/TopRow"]
+unique_name_in_owner = true
 layout_mode = 2
-text = "* Tier 1"
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.93, 0.93, 1, 1)
+theme_override_font_sizes/font_size = 14
+
+[node name="TypeLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.8, 1)
+theme_override_font_sizes/font_size = 11
+
+[node name="TierLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.84, 0, 1)
+theme_override_font_sizes/font_size = 11
+
+[node name="SelectButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "Seç"
