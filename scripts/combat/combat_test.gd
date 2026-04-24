@@ -45,6 +45,24 @@ func _ready() -> void:
 	]
 	for i in range(cards.size()):
 		pipeline_bar.set_card_in_slot(i, cards[i])
+	
+	_update_hp_display()
+
+func _update_hp_display() -> void:
+	var cm = get_node(\"/root/CombatManager\")
+	%HPBar.max_value = cm.golem_stats.max_hp
+	%HPBar.value = cm.golem_stats.current_hp
+	
+	var hp_label = %HPBar.get_parent().get_node(\"HPLabel\")
+	if hp_label:
+		hp_label.text = \"GOLEM: %d/%d\" % [cm.golem_stats.current_hp, cm.golem_stats.max_hp]
+	
+	if enemy:
+		%EnemyHPBar.max_value = enemy.max_hp
+		%EnemyHPBar.value = enemy.current_hp
+		var enemy_label = %EnemyHPBar.get_parent().get_node(\"EnemyNameLabel\")
+		if enemy_label:
+			enemy_label.text = \"%s: %d/%d\" % [enemy.enemy_name, enemy.current_hp, enemy.max_hp]
 
 func _make_card(card_name: String, type: AetherEnums.CardType,
 				element: AetherEnums.ElementType, value: float) -> CardData:
@@ -56,6 +74,7 @@ func _make_card(card_name: String, type: AetherEnums.CardType,
 	return card
 
 func _on_start_pressed() -> void:
+	_update_hp_display()
 	pipeline_bar.start_pipeline()
 
 func _on_enemy_attack_pressed() -> void:

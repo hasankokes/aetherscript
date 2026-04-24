@@ -86,6 +86,11 @@ position = Vector2(220, 150)
 [node name="Enemy" parent="MainLayout/CombatArena/EnemyInstance" unique_id=695795933 instance=ExtResource("4_u1xel")]
 unique_name_in_owner = true
 
+[node name="GolemSprite" type="Polygon2D" parent="MainLayout/CombatArena" unique_id=132677304]
+position = Vector2(100, 250)
+color = Color(0.2, 0.8, 1, 1)
+polygon = PackedVector2Array(-40, -40, 40, -40, 40, 40, -40, 40)
+
 [node name="StartButton" type="Button" parent="MainLayout" unique_id=1644042398]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 60)
