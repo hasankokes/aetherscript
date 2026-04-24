@@ -27,6 +27,9 @@ func golem_take_damage(amount: float):
 	if golem_stats.current_hp <= 0:
 		_on_combat_lost()
 
+func golem_heal(amount: float):
+	golem_stats.current_hp = min(golem_stats.max_hp, golem_stats.current_hp + amount)
+
 func enemy_take_damage(amount: float):
 	if current_enemy and current_enemy.has_method("take_damage"):
 		current_enemy.take_damage(amount)

@@ -123,7 +123,7 @@ func _start_combat(node_data: DungeonNodeData) -> void:
 func _handle_rest(_node_data: DungeonNodeData) -> void:
 	var _combat_manager = get_node("/root/CombatManager")
 	var heal_amount = _combat_manager.golem_stats.max_hp * 0.3
-	_combat_manager.golem_stats.heal(heal_amount)
+	_combat_manager.golem_heal(heal_amount)
 	var _event_bus = get_node("/root/EventBus")
 	_event_bus.golem_hp_changed.emit(
 		_combat_manager.golem_stats.current_hp,
