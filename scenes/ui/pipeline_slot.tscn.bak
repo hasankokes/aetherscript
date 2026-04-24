@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://e3ct3sqsrbdl"]
+
+[ext_resource type="Script" uid="uid://brr4b51xv50fk" path="res://scripts/ui/pipeline_slot.gd" id="1_ke86s"]
+
+[node name="PipelineSlot" type="PanelContainer" unique_id=284441946]
+script = ExtResource("1_ke86s")
+
+[node name="SlotBackground" type="ColorRect" parent="." unique_id=348966722]
+layout_mode = 2
+color = Color(0.1, 0.1, 0.1, 1)
+
+[node name="CardIcon" type="TextureRect" parent="." unique_id=65465175]
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CardNameLabel" type="Label" parent="." unique_id=1892313599]
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CooldownOverlay" type="ColorRect" parent="." unique_id=446385768]
+layout_mode = 2
+color = Color(0, 0, 0, 0.6)
+
+[node name="ActiveGlow" type="ColorRect" parent="." unique_id=244779344]
+layout_mode = 2
+color = Color(0.8, 0.8, 0.3, 0.3)
+
+[node name="EmptyLabel" type="Label" parent="." unique_id=133548517]
+layout_mode = 2
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CooldownOverlay2" type="ColorRect" parent="." unique_id=1128082876]
+unique_name_in_owner = true
+layout_mode = 2
+color = Color(0, 0, 0, 0)

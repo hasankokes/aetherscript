@@ -1,16 +1,18 @@
 class_name PipelineSlot
 extends PanelContainer
 
+@warning_ignore("unused_signal")
 signal card_dropped(card_data: CardData, slot_index: int)
+@warning_ignore("unused_signal")
 signal card_removed(slot_index: int)
 
-@onready var card_icon: TextureRect  = $CardIcon
-@onready var card_name_label: Label  = $CardNameLabel
-@onready var active_glow: ColorRect  = $ActiveGlow
-@onready var cooldown_overlay: ColorRect = $CooldownOverlay
-@onready var empty_label: Label      = $EmptyLabel
-@onready var element_bar: ColorRect  = $ElementBar   # Slot altında ince renkli çizgi
-@onready var type_indicator: ColorRect = $TypeIndicator # Sol üst köşe rengi
+@onready var card_icon: TextureRect  = %CardIcon
+@onready var card_name_label: Label  = %CardNameLabel
+@onready var active_glow: ColorRect  = %ActiveGlow
+@onready var cooldown_overlay: ColorRect = %CooldownOverlay
+@onready var empty_label: Label      = %EmptyLabel
+@onready var element_bar: ColorRect  = %ElementBar
+@onready var type_indicator: ColorRect = %TypeIndicator
 
 var slot_index: int = 0
 var current_card: CardData = null

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dx8jdlajlffnl"]
+
+[ext_resource type="Script" uid="uid://btrg3y7nldc0b" path="res://scripts/ui/dungeon_map_node.gd" id="1_kl4yr"]
+
+[node name="DungeonMapNode" type="Button" unique_id=375687980]
+script = ExtResource("1_kl4yr")
+
+[node name="IconLabel" type="Label" parent="." unique_id=673367836]
+layout_mode = 0
+text = "Icon"
+
+[node name="TypeLabel" type="Label" parent="." unique_id=2120311562]
+layout_mode = 0
+text = "Type"
+
+[node name="SelectGlow" type="ColorRect" parent="." unique_id=1142296301]
+visible = false
+layout_mode = 0
+color = Color(1, 1, 0, 0.3)

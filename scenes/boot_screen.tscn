@@ -1,66 +1,80 @@
 [gd_scene format=3 uid="uid://w4al1qf5tu8e"]
 
 [ext_resource type="Script" uid="uid://x2bltqcrs878" path="res://scripts/boot_screen.gd" id="1_nip3r"]
-[ext_resource type="PackedScene" uid="uid://dje8xywmd3xwl" path="res://scenes/ui/hud_menu_button.tscn" id="2_ywjs5"]
 
 [node name="BootScreen" type="Control" unique_id=1878554586]
 layout_mode = 3
-anchors_preset = 0
-script = ExtResource("1_nip3r")
-
-[node name="BgRect" type="ColorRect" parent="." unique_id=2046490384]
-layout_mode = 0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color(0.051, 0.067, 0.11, 1)
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nip3r")
 
-[node name="LogoLabel" type="Label" parent="." unique_id=1063019222]
+[node name="LogoContainer" type="VBoxContainer" parent="." unique_id=1767145079]
 layout_mode = 0
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -150.0
-offset_top = 100.0
-offset_right = 150.0
-offset_bottom = 200.0
-text = "⚗️ AetherScript"
+offset_left = -120.0
+offset_top = -140.0
+offset_right = 120.0
+alignment = 1
+
+[node name="LogoLabel" type="Label" parent="LogoContainer" unique_id=890243656]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 72
+text = "⚗️"
 horizontal_alignment = 1
 
-[node name="SubtitleLabel" type="Label" parent="." unique_id=1715939351]
-layout_mode = 0
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -150.0
-offset_top = 200.0
-offset_right = 150.0
-offset_bottom = 250.0
+[node name="TitleLabel" type="Label" parent="LogoContainer" unique_id=15819783]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.482, 0.184, 0.745, 1)
+theme_override_font_sizes/font_size = 42
+text = "AetherScript"
+horizontal_alignment = 1
+
+[node name="SubtitleLabel" type="Label" parent="LogoContainer" unique_id=1677289447]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.863, 0.647, 0.063, 1)
+theme_override_font_sizes/font_size = 18
 text = "The Alchemical Compiler"
 horizontal_alignment = 1
 
-[node name="LoadingBar" type="ProgressBar" parent="." unique_id=1218916874]
-custom_minimum_size = Vector2(300, 20)
+[node name="LoadingContainer" type="VBoxContainer" parent="." unique_id=965537799]
 layout_mode = 0
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -150.0
-offset_top = -120.0
-offset_right = 150.0
-offset_bottom = -100.0
-max_value = 1.0
+offset_left = -190.0
+offset_top = -94.0
+offset_right = 190.0
 
-[node name="StatusLabel" type="Label" parent="." unique_id=1782036499]
-layout_mode = 0
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -150.0
-offset_top = -90.0
-offset_right = 150.0
-offset_bottom = -60.0
-text = "Sistem yükleniyor..."
+[node name="StatusLabel" type="Label" parent="LoadingContainer" unique_id=1497929966]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.533, 0.533, 0.667, 1)
+theme_override_font_sizes/font_size = 16
+text = "Sistem başlatılıyor..."
 horizontal_alignment = 1
 
-[node name="HudMenuButton" parent="." unique_id=1697492862 instance=ExtResource("2_ywjs5")]
+[node name="LoadingBar" type="ProgressBar" parent="LoadingContainer" unique_id=667987129]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(380, 12)
+layout_mode = 2
+max_value = 1.0
+
+[node name="VersionLabel" type="Label" parent="." unique_id=1200197417]
 layout_mode = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -20.0
+theme_override_colors/font_color = Color(0.267, 0.267, 0.4, 1)
+theme_override_font_sizes/font_size = 12
+text = "v0.2"
+
+[node name="BgRect" type="ColorRect" parent="." unique_id=645985548]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.051, 0.067, 0.125, 1)

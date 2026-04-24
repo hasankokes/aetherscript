@@ -1,10 +1,10 @@
 class_name Enemy
 extends Node2D
 
-@onready var hp_bar: ProgressBar = $HPBar
-@onready var hp_label: Label = $HPLabel
-@onready var damage_label: Label = $DamageLabel
-@onready var death_effect: GPUParticles2D = $DeathEffect
+@onready var hp_bar: ProgressBar = %HPBar
+@onready var hp_label: Label = %HPLabel
+@onready var damage_label: Label = %DamageLabel
+@onready var death_effect: GPUParticles2D = %DeathEffect
 
 var stats: CombatStats = CombatStats.new()
 var enemy_data: EnemyData = null

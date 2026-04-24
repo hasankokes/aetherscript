@@ -1,7 +1,7 @@
 extends Control
 
-@onready var floor_label: Label          = $FloorLabel
-@onready var path_container: VBoxContainer = $PathContainer
+@onready var floor_label: Label          = %FloorLabel
+@onready var path_container: VBoxContainer = %PathContainer
 
 const DUNGEON_MAP_NODE = preload("res://scenes/ui/dungeon_map_node.tscn")
 
@@ -9,7 +9,7 @@ var current_floor: int = 1
 var total_floors: int  = 10
 
 func _ready() -> void:
-    $BackButton.pressed.connect(_on_back_button_pressed)
+    %BackButton.pressed.connect(_on_back_button_pressed)
     _generate_map()
 
 func _generate_map() -> void:

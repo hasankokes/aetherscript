@@ -1,7 +1,7 @@
 extends Control
 
-@onready var pipeline_bar: PipelineBar = $PipelineBar
-@onready var enemy: Enemy = $Enemy
+@onready var pipeline_bar: PipelineBar = %PipelineBar
+@onready var enemy: Enemy = %Enemy
 @onready var _combat_manager: Node = get_node("/root/CombatManager")
 
 var run_start_time: float = 0.0
@@ -10,8 +10,8 @@ var current_floor: int = 0
 func _ready() -> void:
 	run_start_time = Time.get_ticks_msec() / 1000.0
 	var _event_bus = get_node("/root/EventBus")
-	$StartButton.pressed.connect(_on_start_pressed)
-	$EnemyAttackButton.pressed.connect(_on_enemy_attack_pressed)
+	%StartButton.pressed.connect(_on_start_pressed)
+	%EnemyAttackButton.pressed.connect(_on_enemy_attack_pressed)
 	_event_bus.run_ended.connect(_on_run_ended)
 
 	# Test düşmanı oluştur

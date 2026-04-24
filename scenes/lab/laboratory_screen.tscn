@@ -2,89 +2,16 @@
 
 [ext_resource type="Script" uid="uid://53lw2aqf130i" path="res://scripts/lab/laboratory_screen.gd" id="1_jksaa"]
 [ext_resource type="PackedScene" uid="uid://brbovcottvq6e" path="res://scenes/ui/pipeline_bar.tscn" id="2_gim5q"]
-[ext_resource type="PackedScene" uid="uid://blsltkd6ln4wd" path="res://scenes/ui/mastery_panel.tscn" id="2_s3tbe"]
-[ext_resource type="PackedScene" uid="uid://dj3v6r43ycvi3" path="res://scenes/ui/daily_challenge_panel.tscn" id="3_3b4bs"]
 [ext_resource type="PackedScene" uid="uid://dje8xywmd3xwl" path="res://scenes/ui/hud_menu_button.tscn" id="4_emcnm"]
 
 [node name="LaboratoryScreen" type="Control" unique_id=595323939]
 layout_mode = 3
-anchors_preset = 0
-script = ExtResource("1_jksaa")
-
-[node name="TabContainer" type="TabContainer" parent="." unique_id=1389043643]
-custom_minimum_size = Vector2(0, 300)
-layout_mode = 0
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.65
-current_tab = 0
-
-[node name="HardwareTab" type="VBoxContainer" parent="TabContainer" unique_id=1493357697]
-visible = false
-layout_mode = 2
-size_flags_vertical = 3
-metadata/_tab_index = 0
-
-[node name="UpgradeList" type="VBoxContainer" parent="TabContainer/HardwareTab" unique_id=1566829607]
-layout_mode = 2
-
-[node name="CardsTab" type="VBoxContainer" parent="TabContainer" unique_id=1172382446]
-visible = false
-layout_mode = 2
-size_flags_vertical = 3
-metadata/_tab_index = 1
-
-[node name="CardGrid" type="GridContainer" parent="TabContainer/CardsTab" unique_id=2116593887]
-layout_mode = 2
-columns = 2
-
-[node name="ResourceTab" type="VBoxContainer" parent="TabContainer" unique_id=1492481668]
-visible = false
-layout_mode = 2
-size_flags_vertical = 3
-metadata/_tab_index = 2
-
-[node name="ResourceList" type="VBoxContainer" parent="TabContainer/ResourceTab" unique_id=2029294193]
-layout_mode = 2
-
-[node name="MasteryTab" type="ScrollContainer" parent="TabContainer" unique_id=1870948709]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 3
-
-[node name="MasteryPanel" parent="TabContainer/MasteryTab" unique_id=150801474 instance=ExtResource("2_s3tbe")]
-layout_mode = 2
-
-[node name="DailyTab" type="ScrollContainer" parent="TabContainer" unique_id=521366014]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 4
-
-[node name="DailyChallengePanel" parent="TabContainer/DailyTab" unique_id=826219642 instance=ExtResource("3_3b4bs")]
-layout_mode = 2
-
-[node name="RunButton" type="Button" parent="." unique_id=1002157284]
-layout_mode = 0
-offset_left = 200.0
-offset_top = 550.0
-offset_right = 200.0
-offset_bottom = 550.0
-text = "Zindana Gonder!"
-
-[node name="SaveLabel" type="Label" parent="." unique_id=729860772]
-visible = false
-layout_mode = 0
-offset_left = 400.0
-offset_top = 555.0
-offset_right = 400.0
-offset_bottom = 555.0
-text = "Kaydedildi"
-
-[node name="PipelineBar" parent="." unique_id=1905566137 instance=ExtResource("2_gim5q")]
-layout_mode = 0
-offset_left = 20.0
-offset_top = 450.0
-offset_right = 620.0
-offset_bottom = 530.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jksaa")
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=692955772]
 layer = -1
@@ -98,7 +25,152 @@ color = Color(0.051, 0.067, 0.11, 1)
 [node name="HudMenuButton" parent="." unique_id=1697492862 instance=ExtResource("4_emcnm")]
 layout_mode = 0
 
-[node name="PrestigeButton" type="Button" parent="." unique_id=162864201]
+[node name="BgRect" type="ColorRect" parent="." unique_id=1865895705]
+z_index = -1
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.051, 0.067, 0.125, 1)
+
+[node name="HeaderBar" type="PanelContainer" parent="." unique_id=64496401]
+custom_minimum_size = Vector2(480, 64)
 layout_mode = 0
 
-[connection signal="pressed" from="PrestigeButton" to="." method="_on_prestige_button_pressed"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HeaderBar" unique_id=336371708]
+layout_mode = 2
+
+[node name="GolemIcon" type="Label" parent="HeaderBar/HBoxContainer" unique_id=1545305941]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "⚙️"
+
+[node name="TitleLabel" type="Label" parent="HeaderBar/HBoxContainer" unique_id=196280630]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.482, 0.184, 0.745, 1)
+theme_override_font_sizes/font_size = 22
+text = "Laboratuvar"
+
+[node name="AetherLabel" type="Label" parent="HeaderBar/HBoxContainer" unique_id=1193273797]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.863, 0.647, 0.063, 1)
+theme_override_font_sizes/font_size = 16
+text = "✨ 0 Saf Aether"
+
+[node name="PrestigeButton" type="Button" parent="HeaderBar/HBoxContainer" unique_id=837082837]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "⚗️"
+
+[node name="GolemStatusBar" type="HBoxContainer" parent="." unique_id=778474239]
+custom_minimum_size = Vector2(480, 48)
+layout_mode = 0
+offset_top = 64.0
+offset_bottom = 64.0
+
+[node name="HPIcon" type="Label" parent="GolemStatusBar" unique_id=2135931060]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "❤️"
+
+[node name="HPBar" type="ProgressBar" parent="GolemStatusBar" unique_id=306893948]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(180, 16)
+layout_mode = 2
+
+[node name="HPLabel" type="Label" parent="GolemStatusBar" unique_id=1006679753]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.667, 0.667, 0.8, 1)
+theme_override_font_sizes/font_size = 14
+
+[node name="ManaIcon" type="Label" parent="GolemStatusBar" unique_id=1235457847]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "💧"
+
+[node name="ManaBar" type="ProgressBar" parent="GolemStatusBar" unique_id=1055929022]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(140, 16)
+layout_mode = 2
+
+[node name="TabContainer" type="TabContainer" parent="." unique_id=732411030]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(480, 560)
+layout_mode = 0
+offset_top = 112.0
+offset_bottom = 112.0
+current_tab = 0
+
+[node name="⚙️ Donanım" type="ScrollContainer" parent="TabContainer" unique_id=535028541]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="UpgradeList" type="VBoxContainer" parent="TabContainer/⚙️ Donanım" unique_id=1126483533]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="🃏 Kartlar" type="ScrollContainer" parent="TabContainer" unique_id=2007771736]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="CardGrid" type="GridContainer" parent="TabContainer/🃏 Kartlar" unique_id=197343883]
+unique_name_in_owner = true
+layout_mode = 2
+columns = 4
+
+[node name="📅 Günlük" type="Control" parent="TabContainer" unique_id=669623028]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="⚗️ Mastery" type="Control" parent="TabContainer" unique_id=1483298672]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="💎 Kaynaklar" type="ScrollContainer" parent="TabContainer" unique_id=269964043]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 4
+
+[node name="ResourceList" type="VBoxContainer" parent="TabContainer/💎 Kaynaklar" unique_id=933485264]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="PipelineSection" type="VBoxContainer" parent="." unique_id=1536622308]
+custom_minimum_size = Vector2(480, 128)
+layout_mode = 0
+offset_top = 672.0
+offset_bottom = 672.0
+
+[node name="PipelineLabel" type="Label" parent="PipelineSection" unique_id=947711523]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.482, 0.184, 0.745, 1)
+theme_override_font_sizes/font_size = 12
+text = "── PIPELINE ──"
+horizontal_alignment = 1
+
+[node name="PipelineBar" parent="PipelineSection" unique_id=1905566137 instance=ExtResource("2_gim5q")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(480, 96)
+layout_mode = 2
+
+[node name="RunButton" type="Button" parent="." unique_id=445193869]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(460, 52)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 800.0
+offset_right = 10.0
+offset_bottom = 800.0
+theme_override_font_sizes/font_size = 20
+text = "⚔️  ZİNDANA GÖNDER"
+
+[node name="SaveLabel" type="Label" parent="." unique_id=1363427273]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0

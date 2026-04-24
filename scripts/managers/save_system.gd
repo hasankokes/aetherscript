@@ -169,7 +169,9 @@ func _dict_to_card(d: Dictionary) -> CardData:
 	card.cooldown     = d.get("cooldown",     1.0)
 	card.mana_cost    = d.get("mana_cost",    0)
 	card.description  = d.get("description", "")
-	card.synergy_tags = d.get("synergy_tags", [])
+	var tags = d.get("synergy_tags", [])
+	if tags is Array:
+		card.synergy_tags.assign(tags)
 	return card
 
 func delete_save() -> void:

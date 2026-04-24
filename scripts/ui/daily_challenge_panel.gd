@@ -40,8 +40,8 @@ func _update_countdown() -> void:
     var now  = Time.get_unix_time_from_system()
     var next = _get_next_midnight_unix()
     var diff = int(next - now)
-    var h = diff / 3600
-    var m = (diff % 3600) / 60
+    var h = floor(diff / 3600.0)
+    var m = floor((diff % 3600) / 60.0)
     var s = diff % 60
     timer_label.text = "Yenilenmesine: %02d:%02d:%02d" % [h, m, s]
 

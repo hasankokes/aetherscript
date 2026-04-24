@@ -41,3 +41,5 @@ layout_mode = 2
 [node name="ClaimButton" type="Button" parent="Panel" unique_id=331809475]
 layout_mode = 2
 text = "Ödülü Al!"
+
+[connection signal="pressed" from="Panel/ClaimButton" to="." method="_on_claim_button_pressed"]

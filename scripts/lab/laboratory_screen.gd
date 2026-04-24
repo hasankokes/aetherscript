@@ -1,11 +1,11 @@
 extends Control
 
-@onready var upgrade_list: VBoxContainer  = $TabContainer/HardwareTab/UpgradeList
-@onready var card_grid: GridContainer     = $TabContainer/CardsTab/CardGrid
-@onready var resource_list: VBoxContainer = $TabContainer/ResourceTab/ResourceList
-@onready var pipeline_bar: PipelineBar    = $PipelineBar
-@onready var save_label: Label            = $SaveLabel
-@onready var prestige_button: Button      = $PrestigeButton
+@onready var upgrade_list: VBoxContainer  = %UpgradeList
+@onready var card_grid: GridContainer     = %CardGrid
+@onready var resource_list: VBoxContainer = %ResourceList
+@onready var pipeline_bar: PipelineBar    = %PipelineBar
+@onready var save_label: Label            = %SaveLabel
+@onready var prestige_button: Button      = %PrestigeButton
 
 const HARDWARE_UPGRADE_CARD = preload("res://scenes/ui/hardware_upgrade_card.tscn")
 const CARD_INVENTORY_SLOT   = preload("res://scenes/ui/card_inventory_slot.tscn")
@@ -13,12 +13,13 @@ const CARD_INVENTORY_SLOT   = preload("res://scenes/ui/card_inventory_slot.tscn"
 var upgrade_definitions: Array[UpgradeData] = []
 
 func _ready() -> void:
-	$RunButton.pressed.connect(_on_run_button_pressed)
+	%RunButton.pressed.connect(_on_run_button_pressed)
 	_create_upgrade_definitions()
 	_build_hardware_tab()
 	_build_card_tab()
 	_build_resource_tab()
 	_load_pipeline()
+	$TabContainer.current_tab = 1
 	save_label.visible = false
 
 	var auto_save_timer = Timer.new()

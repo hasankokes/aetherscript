@@ -1,19 +1,19 @@
-[gd_scene format=3 uid="uid://dx8jdlajlffnl"]
+[gd_scene format=3 uid="uid://bxvblrnvk73q3"]
 
 [ext_resource type="Script" uid="uid://btrg3y7nldc0b" path="res://scripts/ui/dungeon_map_node.gd" id="1_kl4yr"]
 
-[node name="DungeonMapNode" type="Button" unique_id=375687980]
+[node name="DungeonMapNode" type="Button" unique_id=1239985798]
 script = ExtResource("1_kl4yr")
 
-[node name="IconLabel" type="Label" parent="." unique_id=673367836]
+[node name="IconLabel" type="Label" parent="." unique_id=1546374202]
+unique_name_in_owner = true
 layout_mode = 0
-text = "Icon"
+theme_override_font_sizes/font_size = 28
+horizontal_alignment = 1
 
-[node name="TypeLabel" type="Label" parent="." unique_id=2120311562]
+[node name="TypeLabel" type="Label" parent="." unique_id=681400872]
+unique_name_in_owner = true
 layout_mode = 0
-text = "Type"
-
-[node name="SelectGlow" type="ColorRect" parent="." unique_id=1142296301]
-visible = false
-layout_mode = 0
-color = Color(1, 1, 0, 0.3)
+theme_override_colors/font_color = Color(0.667, 0.667, 0.8, 1)
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1

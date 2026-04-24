@@ -26,8 +26,10 @@ func _apply_global_theme() -> void:
 	var btn_normal = StyleBoxFlat.new()
 	btn_normal.bg_color     = _aether_theme.COLOR_PURPLE_DARK
 	btn_normal.border_color = _aether_theme.COLOR_PURPLE
-	btn_normal.border_width_top = btn_normal.border_width_bottom = 2
-	btn_normal.border_width_left = btn_normal.border_width_right = 2
+	btn_normal.border_width_top = 2
+	btn_normal.border_width_bottom = 2
+	btn_normal.border_width_left = 2
+	btn_normal.border_width_right = 2
 	btn_normal.corner_radius_top_left     = 4
 	btn_normal.corner_radius_top_right    = 4
 	btn_normal.corner_radius_bottom_left  = 4

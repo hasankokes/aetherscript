@@ -1,37 +1,45 @@
-[gd_scene format=3 uid="uid://cd1onf1c2cjm5"]
+[gd_scene format=3 uid="uid://hrpsf81eat4u"]
 
 [ext_resource type="Script" uid="uid://w1htap8qhhqa" path="res://scripts/systems/enemy.gd" id="1_k8udy"]
 
-[node name="Enemy" type="Node2D" unique_id=695795933]
+[node name="Enemy" type="Node2D" unique_id=1298573265]
 script = ExtResource("1_k8udy")
 
-[node name="Sprite" type="Sprite2D" parent="." unique_id=1881952384]
+[node name="EnemySprite" type="Polygon2D" parent="." unique_id=1868802231]
+unique_name_in_owner = true
+color = Color(0.102, 0.141, 0.196, 1)
 
-[node name="HPBar" type="ProgressBar" parent="." unique_id=497382282]
-custom_minimum_size = Vector2(120, 12)
+[node name="EnemyGlow" type="PointLight2D" parent="." unique_id=1189152905]
+color = Color(0.8, 0.2, 0.2, 0.4)
+energy = 0.4
+
+[node name="HPBarContainer" type="VBoxContainer" parent="." unique_id=570920858]
+custom_minimum_size = Vector2(120, 28)
 offset_left = -60.0
 offset_top = -80.0
 offset_right = -60.0
 offset_bottom = -80.0
-value = 100.0
 
-[node name="HPLabel" type="Label" parent="." unique_id=1820477095]
-offset_left = -60.0
-offset_top = -100.0
-offset_right = -60.0
-offset_bottom = -100.0
-text = "100 / 100"
+[node name="EnemyNameLabel" type="Label" parent="HPBarContainer" unique_id=1016624354]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.667, 0.667, 1)
+theme_override_font_sizes/font_size = 12
 horizontal_alignment = 1
 
-[node name="DamageLabel" type="Label" parent="." unique_id=841446764]
+[node name="HPBar" type="ProgressBar" parent="HPBarContainer" unique_id=1369568856]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 10)
+layout_mode = 2
+
+[node name="HPLabel" type="Label" parent="." unique_id=1319732976]
+unique_name_in_owner = true
 visible = false
-offset_left = -30.0
-offset_top = -120.0
-offset_right = -30.0
-offset_bottom = -120.0
-text = "-0"
+
+[node name="DamageLabel" type="Label" parent="." unique_id=139521396]
+unique_name_in_owner = true
+visible = false
+theme_override_font_sizes/font_size = 22
 horizontal_alignment = 1
 
-[node name="DeathEffect" type="GPUParticles2D" parent="." unique_id=618301543]
-emitting = false
-one_shot = true
+[node name="DeathEffect" type="GPUParticles2D" parent="." unique_id=1652189329]
+unique_name_in_owner = true

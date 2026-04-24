@@ -54,7 +54,7 @@ func _refresh() -> void:
 
 func _on_confirm_button_pressed() -> void:
     var _prestige_manager = get_node("/root/PrestigeManager")
-    var gained = _prestige_manager.do_prestige()
+    var _gained = _prestige_manager.do_prestige()
     prestige_confirmed.emit()
     queue_free()
 
