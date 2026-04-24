@@ -24,7 +24,7 @@ func _boot_sequence() -> void:
 	await _loading_step("Elementler kalibre ediliyor...", 0.7)
 	await _loading_step("Pipeline hazırlanıyor...", 0.9)
 	await _loading_step("Hazır.", 1.0)
-	push_warning("DEBUG: Hazır step finished")
+	print("DEBUG: Hazır step finished")
 	await get_tree().create_timer(0.4).timeout
 
 	# Offline kazanç hesapla
@@ -49,7 +49,7 @@ func _show_offline_reward(elapsed_seconds: float) -> void:
 	var screen = OFFLINE_SCREEN.instantiate()
 	add_child(screen)
 	if screen is Control:
-		screen.size = Vector2(1152, 648)
+		screen.size = Vector2(480, 854)
 		screen.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	screen.setup(elapsed_seconds)
 	await screen.tree_exited
