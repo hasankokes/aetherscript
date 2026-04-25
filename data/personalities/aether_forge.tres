@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="GolemPersonalityData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/golem_personality.gd" id="1_personality"]
+
+[resource]
+script = ExtResource("1_personality")
+personality_id = "aether_forge"
+display_name = "Aether Forge"
+emoji = "⚙️"
+description = "Compile hızı artar, HP düşer."
+hp_multiplier = 0.85
+cpu_speed_multiplier = 1.0
+fire_damage_multiplier = 1.0
+water_damage_multiplier = 1.0
+earth_damage_multiplier = 1.0
+air_damage_multiplier = 1.0
+compile_speed_multiplier = 1.5
+disadvantage_text = "HP -%15"
+unlock_condition = "prestige_1"

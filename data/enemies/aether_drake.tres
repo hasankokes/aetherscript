@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/enemy_data.gd" id="1_enemy_data"]
+
+[resource]
+script = ExtResource("1_enemy_data")
+enemy_name = "Aether Ejderi"
+emoji = "🐉"
+enemy_type = 4
+base_hp = 800.0
+base_damage = 35.0
+base_defense = 20.0
+move_speed = 0.8
+weak_to = Array[int]([])
+strong_against = Array[int]([0, 1])
+ganimet_multiplier = 5.0
+description = "Bölüm 1 patronu. Tüm elementlere direnç."

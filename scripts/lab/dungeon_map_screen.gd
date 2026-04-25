@@ -169,8 +169,8 @@ func _handle_mystery(_node_data: DungeonNodeData) -> void:
 		2:  # Yeni kart
 			var bonus_card = CardData.new()
 			bonus_card.card_name  = "Gizemli Guc"
-			bonus_card.card_type  = AetherEnums.CardType.MODIFIER
-			bonus_card.element    = AetherEnums.ElementType.NEUTRAL
+			bonus_card.card_type  = AEnums.CardType.MODIFIER
+			bonus_card.element    = AEnums.ElementType.NEUTRAL
 			bonus_card.base_value = 1.5
 			_player_inv.add_card(bonus_card)
 			print("Gizem: Yeni kart kazandin!")

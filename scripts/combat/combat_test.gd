@@ -24,7 +24,7 @@ func _ready() -> void:
 	test_enemy_data.emoji = "👹"
 	test_enemy_data.base_hp = 200.0
 	test_enemy_data.base_defense = 5.0
-	var weak_elements: Array[AetherEnums.ElementType] = [AetherEnums.ElementType.FIRE]
+	var weak_elements: Array[AEnums.ElementType] = [AEnums.ElementType.FIRE]
 	test_enemy_data.weak_to = weak_elements
 
 	enemy.setup(test_enemy_data)
@@ -32,16 +32,16 @@ func _ready() -> void:
 
 	# Test kartlarını pipeline'a yükle
 	var cards = [
-		_make_card("Fireball", AetherEnums.CardType.ACTION,
-				   AetherEnums.ElementType.FIRE, 30.0),
-		_make_card("Hasar x2", AetherEnums.CardType.MODIFIER,
-				   AetherEnums.ElementType.NEUTRAL, 2.0),
-		_make_card("Fireball", AetherEnums.CardType.ACTION,
-				   AetherEnums.ElementType.FIRE, 30.0),
-		_make_card("HP<30: Heal", AetherEnums.CardType.LOGIC,
-				   AetherEnums.ElementType.NEUTRAL, 25.0),
-		_make_card("Aqua Pulse", AetherEnums.CardType.ACTION,
-				   AetherEnums.ElementType.WATER, 20.0),
+		_make_card("Fireball", AEnums.CardType.ACTION,
+				   AEnums.ElementType.FIRE, 30.0),
+		_make_card("Hasar x2", AEnums.CardType.MODIFIER,
+				   AEnums.ElementType.NEUTRAL, 2.0),
+		_make_card("Fireball", AEnums.CardType.ACTION,
+				   AEnums.ElementType.FIRE, 30.0),
+		_make_card("HP<30: Heal", AEnums.CardType.LOGIC,
+				   AEnums.ElementType.NEUTRAL, 25.0),
+		_make_card("Aqua Pulse", AEnums.CardType.ACTION,
+				   AEnums.ElementType.WATER, 20.0),
 	]
 	for i in range(cards.size()):
 		pipeline_bar.set_card_in_slot(i, cards[i])
@@ -72,8 +72,8 @@ func _update_hp_display() -> void:
 		if enemy_label and enemy.enemy_data:
 			enemy_label.text = "%s: %d/%d" % [enemy.enemy_data.enemy_name, enemy.stats.current_hp, enemy.stats.max_hp]
 
-func _make_card(card_name: String, type: AetherEnums.CardType,
-				element: AetherEnums.ElementType, value: float) -> CardData:
+func _make_card(card_name: String, type: AEnums.CardType,
+				element: AEnums.ElementType, value: float) -> CardData:
 	var card = CardData.new()
 	card.card_name = card_name
 	card.card_type = type

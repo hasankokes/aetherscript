@@ -38,16 +38,16 @@ func _on_hp_changed(current: float, maximum: float) -> void:
 		else:
 			hp_bar.modulate = Color(0.2, 0.9, 0.3)
 
-func _on_combo_changed(count: int, element: AetherEnums.ElementType) -> void:
+func _on_combo_changed(count: int, element: AEnums.ElementType) -> void:
 	if count < 2:
 		combo_label.visible = false
 		return
 
 	var element_emojis = {
-		AetherEnums.ElementType.FIRE:  "FIRE",
-		AetherEnums.ElementType.WATER: "WATER",
-		AetherEnums.ElementType.EARTH: "EARTH",
-		AetherEnums.ElementType.AIR:   "AIR",
+		AEnums.ElementType.FIRE:  "FIRE",
+		AEnums.ElementType.WATER: "WATER",
+		AEnums.ElementType.EARTH: "EARTH",
+		AEnums.ElementType.AIR:   "AIR",
 	}
 	var emoji = element_emojis.get(element, "ELEM")
 	combo_label.text = "COMBO x%d %s" % [count, emoji]

@@ -14,6 +14,7 @@ var upgrade_definitions: Array[UpgradeData] = []
 
 func _ready() -> void:
 	%RunButton.pressed.connect(_on_run_button_pressed)
+	get_node("GolemStatusBar/PersonalityButton").pressed.connect(_on_personality_button_pressed)
 	_create_upgrade_definitions()
 	_build_hardware_tab()
 	_build_card_tab()
@@ -101,12 +102,12 @@ func _build_card_tab() -> void:
 func _add_starter_cards() -> void:
 	var _player_inv = get_node("/root/PlayerInventory")
 	var starters = [
-		["Fireball",      AetherEnums.CardType.ACTION,   AetherEnums.ElementType.FIRE,    35.0],
-		["Aqua Pulse",    AetherEnums.CardType.ACTION,   AetherEnums.ElementType.WATER,   25.0],
-		["Stone Wall",    AetherEnums.CardType.ACTION,   AetherEnums.ElementType.EARTH,   0.0],
-		["Wind Slash",    AetherEnums.CardType.ACTION,   AetherEnums.ElementType.AIR,     20.0],
-		["Hasar x2",      AetherEnums.CardType.MODIFIER, AetherEnums.ElementType.NEUTRAL, 2.0],
-		["HP<30: Heal",   AetherEnums.CardType.LOGIC,    AetherEnums.ElementType.NEUTRAL, 30.0],
+		["Fireball",      AEnums.CardType.ACTION,   AEnums.ElementType.FIRE,    35.0],
+		["Aqua Pulse",    AEnums.CardType.ACTION,   AEnums.ElementType.WATER,   25.0],
+		["Stone Wall",    AEnums.CardType.ACTION,   AEnums.ElementType.EARTH,   0.0],
+		["Wind Slash",    AEnums.CardType.ACTION,   AEnums.ElementType.AIR,     20.0],
+		["Hasar x2",      AEnums.CardType.MODIFIER, AEnums.ElementType.NEUTRAL, 2.0],
+		["HP<30: Heal",   AEnums.CardType.LOGIC,    AEnums.ElementType.NEUTRAL, 30.0],
 	]
 	for s in starters:
 		var card = CardData.new()
@@ -172,6 +173,11 @@ func _on_upgrade_purchased(_upgrade_data: UpgradeData) -> void:
 	_build_resource_tab()
 	if _upgrade_data.hardware_key == "ram_capacity":
 		pipeline_bar.build_pipeline(GameManager.get_pipeline_slot_count())
+
+func _on_personality_button_pressed() -> void:
+	const GOLEM_SELECT = preload("res://scenes/ui/golem_select_screen.tscn")
+	var screen = GOLEM_SELECT.instantiate()
+	add_child(screen)
 
 func _on_run_button_pressed() -> void:
 	PlayerInventory.save()

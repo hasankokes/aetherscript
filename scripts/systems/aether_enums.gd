@@ -1,5 +1,5 @@
 # AetherScript - Global Enum Definitions
-class_name AetherEnums
+class_name AEnums
 
 enum ElementType { FIRE, WATER, EARTH, AIR, NEUTRAL }
 

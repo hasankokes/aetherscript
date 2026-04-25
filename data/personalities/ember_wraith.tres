@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="GolemPersonalityData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/golem_personality.gd" id="1_personality"]
+
+[resource]
+script = ExtResource("1_personality")
+personality_id = "ember_wraith"
+display_name = "Kor Hayaleti"
+emoji = "🔥"
+description = "Ateş hasarı çok güçlü, Su sinerjisi çalışmaz."
+hp_multiplier = 1.0
+cpu_speed_multiplier = 1.0
+fire_damage_multiplier = 1.25
+water_damage_multiplier = 0.0
+earth_damage_multiplier = 1.0
+air_damage_multiplier = 1.0
+compile_speed_multiplier = 1.0
+disadvantage_text = "Su sinerjisi devre dışı"
+unlock_condition = "mastery_fire_15"

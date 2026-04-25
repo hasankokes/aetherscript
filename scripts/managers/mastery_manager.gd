@@ -16,18 +16,18 @@ const SYNERGY_UNLOCK_LEVELS: Dictionary = {
 }
 
 var mastery_xp: Dictionary = {
-	AetherEnums.ElementType.FIRE:  0,
-	AetherEnums.ElementType.WATER: 0,
-	AetherEnums.ElementType.EARTH: 0,
-	AetherEnums.ElementType.AIR:   0,
+	AEnums.ElementType.FIRE:  0,
+	AEnums.ElementType.WATER: 0,
+	AEnums.ElementType.EARTH: 0,
+	AEnums.ElementType.AIR:   0,
 }
 
 func _ready() -> void:
 	var _event_bus = get_node("/root/EventBus")
 	_event_bus.mastery_xp_gained.connect(_on_xp_gained)
 
-func _on_xp_gained(element: AetherEnums.ElementType, amount: int) -> void:
-	if element == AetherEnums.ElementType.NEUTRAL:
+func _on_xp_gained(element: AEnums.ElementType, amount: int) -> void:
+	if element == AEnums.ElementType.NEUTRAL:
 		return
 
 	var old_level = get_level(element)
@@ -42,11 +42,11 @@ func _on_xp_gained(element: AetherEnums.ElementType, amount: int) -> void:
 	_combat_manager.mastery_damage_bonus[element] = \
 		1.0 + new_level * DAMAGE_BONUS_PER_LEVEL
 
-func get_level(element: AetherEnums.ElementType) -> int:
+func get_level(element: AEnums.ElementType) -> int:
 	var xp = mastery_xp.get(element, 0)
 	return mini(xp / XP_PER_LEVEL, MAX_LEVEL)
 
-func get_xp_progress(element: AetherEnums.ElementType) -> float:
+func get_xp_progress(element: AEnums.ElementType) -> float:
 	var xp = mastery_xp.get(element, 0)
 	var level = get_level(element)
 	if level >= MAX_LEVEL:
@@ -54,19 +54,19 @@ func get_xp_progress(element: AetherEnums.ElementType) -> float:
 	var xp_in_level = xp - (level * XP_PER_LEVEL)
 	return float(xp_in_level) / XP_PER_LEVEL
 
-func _on_level_up(element: AetherEnums.ElementType, new_level: int) -> void:
+func _on_level_up(element: AEnums.ElementType, new_level: int) -> void:
 	print("LEVEL UP! Element: %s -> Level %d" % [
-		AetherEnums.ElementType.keys()[element], new_level])
+		AEnums.ElementType.keys()[element], new_level])
 	_check_synergy_unlocks()
 
 func _check_synergy_unlocks() -> void:
 	var pairs = {
-		"fire_earth":  [AetherEnums.ElementType.FIRE,  AetherEnums.ElementType.EARTH],
-		"fire_air":    [AetherEnums.ElementType.FIRE,  AetherEnums.ElementType.AIR],
-		"water_earth": [AetherEnums.ElementType.WATER, AetherEnums.ElementType.EARTH],
-		"water_air":   [AetherEnums.ElementType.WATER, AetherEnums.ElementType.AIR],
-		"earth_air":   [AetherEnums.ElementType.EARTH, AetherEnums.ElementType.AIR],
-		"fire_water":  [AetherEnums.ElementType.FIRE,  AetherEnums.ElementType.WATER],
+		"fire_earth":  [AEnums.ElementType.FIRE,  AEnums.ElementType.EARTH],
+		"fire_air":    [AEnums.ElementType.FIRE,  AEnums.ElementType.AIR],
+		"water_earth": [AEnums.ElementType.WATER, AEnums.ElementType.EARTH],
+		"water_air":   [AEnums.ElementType.WATER, AEnums.ElementType.AIR],
+		"earth_air":   [AEnums.ElementType.EARTH, AEnums.ElementType.AIR],
+		"fire_water":  [AEnums.ElementType.FIRE,  AEnums.ElementType.WATER],
 	}
 	for synergy_id in pairs:
 		var elements = pairs[synergy_id]
@@ -83,12 +83,12 @@ func _unlock_synergy_card(synergy_id: String) -> void:
 			return
 
 	var synergy_cards = {
-		"fire_earth":  ["Magma Pulse",       AetherEnums.ElementType.FIRE,  55.0],
-		"fire_air":    ["Firestorm Vortex",  AetherEnums.ElementType.FIRE,  45.0],
-		"water_earth": ["Obsidian Torrent",  AetherEnums.ElementType.WATER, 40.0],
-		"water_air":   ["Tempest Lens",      AetherEnums.ElementType.WATER, 35.0],
-		"earth_air":   ["Dust Devil",        AetherEnums.ElementType.EARTH, 38.0],
-		"fire_water":  ["Steam Engine",      AetherEnums.ElementType.FIRE,  70.0],
+		"fire_earth":  ["Magma Pulse",       AEnums.ElementType.FIRE,  55.0],
+		"fire_air":    ["Firestorm Vortex",  AEnums.ElementType.FIRE,  45.0],
+		"water_earth": ["Obsidian Torrent",  AEnums.ElementType.WATER, 40.0],
+		"water_air":   ["Tempest Lens",      AEnums.ElementType.WATER, 35.0],
+		"earth_air":   ["Dust Devil",        AEnums.ElementType.EARTH, 38.0],
+		"fire_water":  ["Steam Engine",      AEnums.ElementType.FIRE,  70.0],
 	}
 	var data = synergy_cards.get(synergy_id)
 	if data == null:
@@ -96,7 +96,7 @@ func _unlock_synergy_card(synergy_id: String) -> void:
 
 	var card = CardData.new()
 	card.card_name  = data[0]
-	card.card_type  = AetherEnums.CardType.ACTION
+	card.card_type  = AEnums.CardType.ACTION
 	card.element    = data[1]
 	card.base_value = data[2]
 	card.synergy_tags = [synergy_id]

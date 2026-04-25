@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/enemy_data.gd" id="1_enemy_data"]
+
+[resource]
+script = ExtResource("1_enemy_data")
+enemy_name = "Boşluk Cadısı"
+emoji = "🧙"
+enemy_type = 2
+base_hp = 120.0
+base_damage = 25.0
+base_defense = 5.0
+move_speed = 1.0
+weak_to = Array[int]([2])
+strong_against = Array[int]([1, 3])
+ganimet_multiplier = 2.0
+description = "Büyülü saldırılar, kırılgan vücut."

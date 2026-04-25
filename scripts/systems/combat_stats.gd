@@ -9,14 +9,14 @@ extends Resource
 
 # Elementel direnç/zayıflık çarpanları
 @export var element_multipliers: Dictionary = {
-	AetherEnums.ElementType.FIRE: 1.0,
-	AetherEnums.ElementType.WATER: 1.0,
-	AetherEnums.ElementType.EARTH: 1.0,
-	AetherEnums.ElementType.AIR: 1.0,
-	AetherEnums.ElementType.NEUTRAL: 1.0,
+	AEnums.ElementType.FIRE: 1.0,
+	AEnums.ElementType.WATER: 1.0,
+	AEnums.ElementType.EARTH: 1.0,
+	AEnums.ElementType.AIR: 1.0,
+	AEnums.ElementType.NEUTRAL: 1.0,
 }
 
-func take_damage(raw_damage: float, element: AetherEnums.ElementType) -> float:
+func take_damage(raw_damage: float, element: AEnums.ElementType) -> float:
 	var multiplier: float = element_multipliers.get(element, 1.0)
 	var mitigated: float = max(0.0, raw_damage * multiplier - defense)
 	current_hp = max(0.0, current_hp - mitigated)

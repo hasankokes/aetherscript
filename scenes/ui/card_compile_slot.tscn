@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://rr2pjfuaqddd"]
+
+[ext_resource type="Script" uid="uid://cmhppjdnv22go" path="res://scripts/ui/card_compile_slot.gd" id="1_itv5d"]
+
+[node name="CardCompileSlot" type="PanelContainer" unique_id=1391481947]
+script = ExtResource("1_itv5d")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2072286559]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="TopRow" type="HBoxContainer" parent="VBoxContainer" unique_id=1449498041]
+layout_mode = 2
+
+[node name="ElementLabel" type="Label" parent="VBoxContainer/TopRow" unique_id=638138600]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+
+[node name="CardNameLabel" type="Label" parent="VBoxContainer/TopRow" unique_id=1566221849]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.937, 0.937, 1, 1)
+theme_override_font_sizes/font_size = 14
+
+[node name="TierLabel" type="Label" parent="VBoxContainer/TopRow" unique_id=532920903]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+
+[node name="ValueLabel" type="Label" parent="VBoxContainer" unique_id=1409011307]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.66, 0.66, 0.8, 1)
+theme_override_font_sizes/font_size = 11
+
+[node name="MutationLabel" type="Label" parent="VBoxContainer" unique_id=1182596767]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.53, 1, 1)
+theme_override_font_sizes/font_size = 10
+
+[node name="CompileBar" type="ProgressBar" parent="VBoxContainer" unique_id=365461565]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="CostLabel" type="Label" parent="VBoxContainer" unique_id=1867641518]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.86, 0.647, 0.06, 1)
+theme_override_font_sizes/font_size = 11
+
+[node name="CompileButton" type="Button" parent="VBoxContainer" unique_id=143371614]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 13
+
+[node name="StatusLabel" type="Label" parent="VBoxContainer" unique_id=1126263224]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.53, 0.8, 0.53, 1)
+theme_override_font_sizes/font_size = 11

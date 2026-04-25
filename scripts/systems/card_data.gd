@@ -2,9 +2,9 @@ class_name CardData
 extends Resource
 
 @export var card_name: String = ""
-@export var card_type: AetherEnums.CardType = AetherEnums.CardType.ACTION
-@export var element: AetherEnums.ElementType = AetherEnums.ElementType.NEUTRAL
-@export var tier: AetherEnums.CardTier = AetherEnums.CardTier.TIER_1
+@export var card_type: AEnums.CardType = AEnums.CardType.ACTION
+@export var element: AEnums.ElementType = AEnums.ElementType.NEUTRAL
+@export var tier: AEnums.CardTier = AEnums.CardTier.TIER_1
 @export var base_value: float = 10.0
 @export var cooldown: float = 1.0
 @export var mana_cost: int = 0

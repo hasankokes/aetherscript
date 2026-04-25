@@ -6,8 +6,29 @@ var golem_stats: Dictionary = {
 	"attack": 10,
 	"defense": 5
 }
-var mastery_damage_bonus: Dictionary = {}
-var mastery_crit_bonus: Dictionary = {}
+var mastery_damage_bonus: Dictionary = {
+	AEnums.ElementType.FIRE: 1.0,
+	AEnums.ElementType.WATER: 1.0,
+	AEnums.ElementType.EARTH: 1.0,
+	AEnums.ElementType.AIR: 1.0,
+	AEnums.ElementType.NEUTRAL: 1.0
+}
+var golem_damage_multiplier: Dictionary = {
+	AEnums.ElementType.FIRE: 1.0,
+	AEnums.ElementType.WATER: 1.0,
+	AEnums.ElementType.EARTH: 1.0,
+	AEnums.ElementType.AIR: 1.0,
+	AEnums.ElementType.NEUTRAL: 1.0
+}
+var mastery_crit_bonus: Dictionary = {
+	AEnums.ElementType.FIRE: 0.0,
+	AEnums.ElementType.WATER: 0.0,
+	AEnums.ElementType.EARTH: 0.0,
+	AEnums.ElementType.AIR: 0.0,
+	AEnums.ElementType.NEUTRAL: 0.0
+}
+var damage_reduction: float = 0.0
+var crit_mode: bool = false
 var current_enemy: Node = null
 var is_combat_active: bool = false
 
@@ -26,9 +47,9 @@ func _on_card_activated(card: CardData, _slot_index: int) -> void:
 		return
 	
 	match card.card_type:
-		AetherEnums.CardType.ACTION:
+		AEnums.CardType.ACTION:
 			enemy_take_damage(card.base_value, card.element)
-		AetherEnums.CardType.LOGIC:
+		AEnums.CardType.LOGIC:
 			# Basit bir mantık: Eğer can %30 altındaysa iyileştir (kart açıklamasındaki gibi)
 			if golem_stats.current_hp < golem_stats.max_hp * 0.3:
 				golem_heal(card.base_value)
@@ -66,7 +87,7 @@ func golem_heal(amount: float):
 	if eb:
 		eb.golem_hp_changed.emit(golem_stats.current_hp, golem_stats.max_hp)
 
-func enemy_take_damage(amount: float, element: AetherEnums.ElementType = AetherEnums.ElementType.NEUTRAL):
+func enemy_take_damage(amount: float, element: AEnums.ElementType = AEnums.ElementType.NEUTRAL):
 	if current_enemy and current_enemy.has_method("receive_damage"):
 		current_enemy.receive_damage(amount, element)
 

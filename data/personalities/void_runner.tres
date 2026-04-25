@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="GolemPersonalityData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/golem_personality.gd" id="1_personality"]
+
+[resource]
+script = ExtResource("1_personality")
+personality_id = "void_runner"
+display_name = "Boşluk Koşucusu"
+emoji = "💨"
+description = "Pipeline çok hızlı döner, Logic kartlar pahalı."
+hp_multiplier = 1.0
+cpu_speed_multiplier = 1.15
+fire_damage_multiplier = 1.0
+water_damage_multiplier = 1.0
+earth_damage_multiplier = 1.0
+air_damage_multiplier = 1.10
+compile_speed_multiplier = 1.0
+disadvantage_text = "Logic kart maliyeti +%30"
+unlock_condition = "mastery_air_10"

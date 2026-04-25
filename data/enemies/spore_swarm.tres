@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/enemy_data.gd" id="1_enemy_data"]
+
+[resource]
+script = ExtResource("1_enemy_data")
+enemy_name = "Spor Sürüsü"
+emoji = "🍄"
+enemy_type = 3
+base_hp = 40.0
+base_damage = 8.0
+base_defense = 0.0
+move_speed = 2.0
+weak_to = Array[int]([0, 3])
+strong_against = Array[int]([])
+ganimet_multiplier = 0.6
+description = "Zayıf ama çok sayıda gelir."

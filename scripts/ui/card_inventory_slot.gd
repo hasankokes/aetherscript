@@ -12,17 +12,17 @@ signal card_selected(card: CardData)
 var card_data: CardData = null
 
 const ELEMENT_EMOJI = {
-	AetherEnums.ElementType.FIRE:    "🔥",
-	AetherEnums.ElementType.WATER:   "💧",
-	AetherEnums.ElementType.EARTH:   "🌿",
-	AetherEnums.ElementType.AIR:     "💨",
-	AetherEnums.ElementType.NEUTRAL: "⚪",
+	AEnums.ElementType.FIRE:    "🔥",
+	AEnums.ElementType.WATER:   "💧",
+	AEnums.ElementType.EARTH:   "🌿",
+	AEnums.ElementType.AIR:     "💨",
+	AEnums.ElementType.NEUTRAL: "⚪",
 }
 
 const TIER_TEXT = {
-	AetherEnums.CardTier.TIER_1: "* Tier 1",
-	AetherEnums.CardTier.TIER_2: "** Tier 2",
-	AetherEnums.CardTier.TIER_3: "*** Tier 3",
+	AEnums.CardTier.TIER_1: "* Tier 1",
+	AEnums.CardTier.TIER_2: "** Tier 2",
+	AEnums.CardTier.TIER_3: "*** Tier 3",
 }
 
 func setup(card: CardData) -> void:
@@ -32,13 +32,13 @@ func setup(card: CardData) -> void:
 	tier_label.text      = TIER_TEXT.get(card.tier, "?")
 	
 	match card.card_type:
-		AetherEnums.CardType.ACTION:
+		AEnums.CardType.ACTION:
 			type_label.text = "ACTION"
 			type_label.modulate = Color(1.0, 0.4, 0.4)
-		AetherEnums.CardType.MODIFIER:
+		AEnums.CardType.MODIFIER:
 			type_label.text = "MODIFIER"
 			type_label.modulate = Color(0.4, 1.0, 0.4)
-		AetherEnums.CardType.LOGIC:
+		AEnums.CardType.LOGIC:
 			type_label.text = "LOGIC"
 			type_label.modulate = Color(0.4, 0.4, 1.0)
 	

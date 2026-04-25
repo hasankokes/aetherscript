@@ -162,9 +162,9 @@ func _card_to_dict(card: CardData) -> Dictionary:
 func _dict_to_card(d: Dictionary) -> CardData:
 	var card = CardData.new()
 	card.card_name    = d.get("card_name",   "?")
-	card.card_type    = d.get("card_type",    AetherEnums.CardType.ACTION)
-	card.element      = d.get("element",      AetherEnums.ElementType.NEUTRAL)
-	card.tier         = d.get("tier",         AetherEnums.CardTier.TIER_1)
+	card.card_type    = d.get("card_type",    AEnums.CardType.ACTION)
+	card.element      = d.get("element",      AEnums.ElementType.NEUTRAL)
+	card.tier         = d.get("tier",         AEnums.CardTier.TIER_1)
 	card.base_value   = d.get("base_value",   10.0)
 	card.cooldown     = d.get("cooldown",     1.0)
 	card.mana_cost    = d.get("mana_cost",    0)

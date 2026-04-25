@@ -1,3 +1,17 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+
+# Assets & Generated
+*.bak
+*.tmp
+*.uid
+addons/godot_mcp/cache/
+
+# Scratch & Brain
+scratch/
+.agents/
+.gemini/
+
+# OS specific
+.DS_Store

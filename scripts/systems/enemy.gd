@@ -33,7 +33,7 @@ func setup(data: EnemyData) -> void:
 
 	_update_hp_bar()
 
-func receive_damage(amount: float, element: AetherEnums.ElementType) -> void:
+func receive_damage(amount: float, element: AEnums.ElementType) -> void:
 	if is_dead:
 		return
 
@@ -50,17 +50,17 @@ func _update_hp_bar() -> void:
 	hp_bar.max_value = stats.max_hp
 	hp_bar.value = stats.current_hp
 
-func _show_damage_number(amount: float, element: AetherEnums.ElementType) -> void:
+func _show_damage_number(amount: float, element: AEnums.ElementType) -> void:
 	damage_label.text = "-%d" % int(amount)
 	damage_label.visible = true
 
 	# Element rengine göre renk
 	var colors = {
-		AetherEnums.ElementType.FIRE:    Color(1.0, 0.3, 0.1),
-		AetherEnums.ElementType.WATER:   Color(0.1, 0.8, 1.0),
-		AetherEnums.ElementType.EARTH:   Color(0.7, 0.5, 0.1),
-		AetherEnums.ElementType.AIR:     Color(0.8, 0.95, 1.0),
-		AetherEnums.ElementType.NEUTRAL: Color(1.0, 1.0, 1.0),
+		AEnums.ElementType.FIRE:    Color(1.0, 0.3, 0.1),
+		AEnums.ElementType.WATER:   Color(0.1, 0.8, 1.0),
+		AEnums.ElementType.EARTH:   Color(0.7, 0.5, 0.1),
+		AEnums.ElementType.AIR:     Color(0.8, 0.95, 1.0),
+		AEnums.ElementType.NEUTRAL: Color(1.0, 1.0, 1.0),
 	}
 	damage_label.modulate = colors.get(element, Color.WHITE)
 

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/enemy_data.gd" id="1_enemy_data"]
+
+[resource]
+script = ExtResource("1_enemy_data")
+enemy_name = "Demir Muhafız"
+emoji = "🛡️"
+enemy_type = 1
+base_hp = 300.0
+base_damage = 22.0
+base_defense = 25.0
+move_speed = 0.5
+weak_to = Array[int]([1])
+strong_against = Array[int]([0, 2, 3])
+ganimet_multiplier = 2.5
+description = "Elite düşman. Çok yüksek savunma."

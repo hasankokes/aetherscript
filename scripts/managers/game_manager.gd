@@ -4,10 +4,10 @@ var current_node: DungeonNodeData = null
 
 # Oyuncu kalıcı verileri
 var mastery_levels: Dictionary = {
-	AetherEnums.ElementType.FIRE: 0,
-	AetherEnums.ElementType.WATER: 0,
-	AetherEnums.ElementType.EARTH: 0,
-	AetherEnums.ElementType.AIR: 0,
+	AEnums.ElementType.FIRE: 0,
+	AEnums.ElementType.WATER: 0,
+	AEnums.ElementType.EARTH: 0,
+	AEnums.ElementType.AIR: 0,
 }
 
 var hardware_levels: Dictionary = {

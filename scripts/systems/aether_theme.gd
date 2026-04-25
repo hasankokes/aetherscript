@@ -26,27 +26,27 @@ const COLOR_LOGIC         = Color(0.200, 0.400, 0.900)
 const COLOR_CHANNEL       = Color(0.100, 0.800, 0.700)
 const COLOR_DELAY         = Color(0.500, 0.500, 0.550)
 
-func get_element_color(element: AetherEnums.ElementType) -> Color:
-    match element:
-        AetherEnums.ElementType.FIRE:    return COLOR_FIRE
-        AetherEnums.ElementType.WATER:   return COLOR_WATER
-        AetherEnums.ElementType.EARTH:   return COLOR_EARTH
-        AetherEnums.ElementType.AIR:     return COLOR_AIR
-        _:                               return COLOR_NEUTRAL
+func get_element_color(element: AEnums.ElementType) -> Color:
+	match element:
+		AEnums.ElementType.FIRE:    return COLOR_FIRE
+		AEnums.ElementType.WATER:   return COLOR_WATER
+		AEnums.ElementType.EARTH:   return COLOR_EARTH
+		AEnums.ElementType.AIR:     return COLOR_AIR
+		_:                               return COLOR_NEUTRAL
 
-func get_element_glow(element: AetherEnums.ElementType) -> Color:
-    match element:
-        AetherEnums.ElementType.FIRE:    return COLOR_FIRE_GLOW
-        AetherEnums.ElementType.WATER:   return COLOR_WATER_GLOW
-        AetherEnums.ElementType.EARTH:   return COLOR_EARTH_GLOW
-        AetherEnums.ElementType.AIR:     return COLOR_AIR_GLOW
-        _:                               return COLOR_NEUTRAL
+func get_element_glow(element: AEnums.ElementType) -> Color:
+	match element:
+		AEnums.ElementType.FIRE:    return COLOR_FIRE_GLOW
+		AEnums.ElementType.WATER:   return COLOR_WATER_GLOW
+		AEnums.ElementType.EARTH:   return COLOR_EARTH_GLOW
+		AEnums.ElementType.AIR:     return COLOR_AIR_GLOW
+		_:                               return COLOR_NEUTRAL
 
-func get_card_type_color(card_type: AetherEnums.CardType) -> Color:
-    match card_type:
-        AetherEnums.CardType.ACTION:   return COLOR_ACTION
-        AetherEnums.CardType.MODIFIER: return COLOR_MODIFIER
-        AetherEnums.CardType.LOGIC:    return COLOR_LOGIC
-        AetherEnums.CardType.CHANNEL:  return COLOR_CHANNEL
-        AetherEnums.CardType.DELAY:    return COLOR_DELAY
-        _:                             return COLOR_NEUTRAL
+func get_card_type_color(card_type: AEnums.CardType) -> Color:
+	match card_type:
+		AEnums.CardType.ACTION:   return COLOR_ACTION
+		AEnums.CardType.MODIFIER: return COLOR_MODIFIER
+		AEnums.CardType.LOGIC:    return COLOR_LOGIC
+		AEnums.CardType.CHANNEL:  return COLOR_CHANNEL
+		AEnums.CardType.DELAY:    return COLOR_DELAY
+		_:                             return COLOR_NEUTRAL
