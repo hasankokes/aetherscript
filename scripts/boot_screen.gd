@@ -3,8 +3,12 @@ extends Control
 @onready var loading_bar: ProgressBar = %LoadingBar
 @onready var status_label: Label      = %StatusLabel
 @onready var logo_label: Label        = %LogoLabel
+@onready var version_label: Label     = $VersionLabel
+
+const VERSION = "v1.0"
 
 func _ready() -> void:
+	version_label.text = VERSION
 	_load_audio_settings()
 	logo_label.modulate.a = 0.0
 	_animate_logo()

@@ -12,9 +12,12 @@ const CARD_INVENTORY_SLOT   = preload("res://scenes/ui/card_inventory_slot.tscn"
 
 var upgrade_definitions: Array[UpgradeData] = []
 
+const ACHIEVEMENTS_SCREEN = preload("res://scenes/ui/achievements_screen.tscn")
+
 func _ready() -> void:
 	%RunButton.pressed.connect(_on_run_button_pressed)
 	get_node("GolemStatusBar/PersonalityButton").pressed.connect(_on_personality_button_pressed)
+	get_node("HeaderBar/HBoxContainer/AchievementsButton").pressed.connect(_on_achievements_button_pressed)
 	UISoundHelper.add_sounds_to_all_buttons(self)
 	_create_upgrade_definitions()
 	_build_hardware_tab()
@@ -178,6 +181,10 @@ func _on_upgrade_purchased(_upgrade_data: UpgradeData) -> void:
 	_build_resource_tab()
 	if _upgrade_data.hardware_key == "ram_capacity":
 		pipeline_bar.build_pipeline(GameManager.get_pipeline_slot_count())
+
+func _on_achievements_button_pressed() -> void:
+	var screen = ACHIEVEMENTS_SCREEN.instantiate()
+	add_child(screen)
 
 func _on_personality_button_pressed() -> void:
 	const GOLEM_SELECT = preload("res://scenes/ui/golem_select_screen.tscn")

@@ -35,6 +35,8 @@ CompileManager="*res://scripts/managers/compile_manager.gd"
 GolemManager="*res://scripts/managers/golem_manager.gd"
 ProceduralAudio="*res://scripts/managers/procedural_audio.gd"
 DynamicMusic="*res://scripts/managers/dynamic_music.gd"
+AchievementManager="*res://scripts/managers/achievement_manager.gd"
+ToastManager="*res://scripts/managers/toast_manager.gd"
 
 [display]
 

@@ -9,6 +9,7 @@ func save_all() -> void:
 	var _mastery_manager = get_node("/root/MasteryManager")
 	var _prestige_manager = get_node("/root/PrestigeManager")
 	var _daily_manager = get_node("/root/DailyChallengeManager")
+	var _achievement_manager = get_node("/root/AchievementManager")
 
 	var data = {
 		"version": SAVE_VERSION,
@@ -17,6 +18,7 @@ func save_all() -> void:
 		# Resources
 		"resources": _player_inv.resources,
 
+		"achievements": _achievement_manager.get_save_data(),
 		# Hardware levels
 		"hardware": _game_manager.hardware_levels,
 
@@ -77,10 +79,14 @@ func load_all() -> bool:
 	var _mastery_manager = get_node("/root/MasteryManager")
 	var _prestige_manager = get_node("/root/PrestigeManager")
 	var _daily_manager = get_node("/root/DailyChallengeManager")
+	var _achievement_manager = get_node("/root/AchievementManager")
 
 	# Resources
 	if data.has("resources"):
 		_player_inv.resources = data["resources"]
+
+	if data.has("achievements"):
+		_achievement_manager.load_save_data(data["achievements"])
 
 	# Hardware
 	if data.has("hardware"):

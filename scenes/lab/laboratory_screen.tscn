@@ -60,6 +60,11 @@ visible = false
 layout_mode = 2
 text = "⚗️"
 
+[node name="AchievementsButton" type="Button" parent="HeaderBar/HBoxContainer" unique_id=1166646872]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+text = "🏆"
+
 [node name="GolemStatusBar" type="HBoxContainer" parent="." unique_id=778474239]
 custom_minimum_size = Vector2(480, 48)
 layout_mode = 0

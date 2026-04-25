@@ -3,7 +3,8 @@ extends Node
 
 static func add_click_sound(button: Button) -> void:
 	button.pressed.connect(func():
-		var _proc_audio = button.get_node("/root/ProceduralAudio")
+		if not button.is_inside_tree(): return
+		var _proc_audio = button.get_node_or_null("/root/ProceduralAudio")
 		if _proc_audio:
 			_proc_audio.play_sfx_ui_click()
 	)

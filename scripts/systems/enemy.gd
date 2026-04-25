@@ -73,6 +73,7 @@ func _show_damage_number(amount: float, element: AEnums.ElementType) -> void:
 func _die() -> void:
 	is_dead = true
 	death_effect.emitting = true
+	_event_bus.enemy_defeated.emit(enemy_data)
 	_event_bus.run_ended.emit(0, {})
 
 	var tween = create_tween()

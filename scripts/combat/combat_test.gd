@@ -124,11 +124,16 @@ func _on_run_ended(_floor_reached: int, _loot: Dictionary) -> void:
 	var _event_bus = get_node("/root/EventBus")
 	var _save_system = get_node("/root/SaveSystem")
 	var _dynamic_music = get_node("/root/DynamicMusic")
+	var _achievement_manager = get_node("/root/AchievementManager")
 
 	if _dynamic_music:
 		_dynamic_music.stop_music()
 
 	var duration = (Time.get_ticks_msec() / 1000.0) - run_start_time
+	
+	if _achievement_manager:
+		_achievement_manager.update_run_stats(current_floor, duration)
+
 	_game_manager.record_run(current_floor, duration)
 	_game_manager.total_kills += 1
 
