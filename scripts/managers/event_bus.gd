@@ -25,6 +25,8 @@ signal run_ended(floor_reached: int, loot: Dictionary)
 # Synergy signals
 @warning_ignore("unused_signal")
 signal synergy_triggered(synergy_id: String)
+@warning_ignore("unused_signal")
+signal ultimate_activated(element: AEnums.ElementType)
 
 # Mobile adaptation signals
 @warning_ignore("unused_signal")

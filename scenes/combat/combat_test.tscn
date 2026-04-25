@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://uar555hq0dok" path="res://scripts/combat/combat_test.gd" id="1_t2e5i"]
 [ext_resource type="PackedScene" uid="uid://brbovcottvq6e" path="res://scenes/ui/pipeline_bar.tscn" id="3_w1m1o"]
+[ext_resource type="PackedScene" uid="uid://dje8xywmd3xwl" path="res://scenes/ui/hud_menu_button.tscn" id="4_n7rfm"]
 [ext_resource type="PackedScene" uid="uid://d14bxxpfxjeew" path="res://scenes/combat/enemy.tscn" id="4_u1xel"]
 
 [node name="CombatScene" type="Control" unique_id=1204983866]
@@ -136,3 +137,11 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="HudMenuButton" parent="." unique_id=1697492862 instance=ExtResource("4_n7rfm")]
+layout_mode = 0
+offset_left = 430.0
+offset_top = 10.0
+offset_right = 438.0
+offset_bottom = 18.0
+grow_horizontal = 0

@@ -5,9 +5,22 @@ extends Control
 @onready var logo_label: Label        = %LogoLabel
 
 func _ready() -> void:
+	_load_audio_settings()
 	logo_label.modulate.a = 0.0
 	_animate_logo()
 	_boot_sequence()
+
+func _load_audio_settings() -> void:
+	var _proc_audio = get_node("/root/ProceduralAudio")
+	if not _proc_audio: return
+	
+	var config = ConfigFile.new()
+	if config.load("user://audio_settings.cfg") != OK:
+		return
+	_proc_audio.sfx_volume = config.get_value("audio", "sfx_volume", 0.8)
+	_proc_audio.sfx_enabled = config.get_value("audio", "sfx_enabled", true)
+	_proc_audio.music_volume = config.get_value("audio", "music_volume", 0.4)
+	_proc_audio.music_enabled = config.get_value("audio", "music_enabled", true)
 
 func _animate_logo() -> void:
 	var tween = create_tween()

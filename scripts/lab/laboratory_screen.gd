@@ -15,6 +15,7 @@ var upgrade_definitions: Array[UpgradeData] = []
 func _ready() -> void:
 	%RunButton.pressed.connect(_on_run_button_pressed)
 	get_node("GolemStatusBar/PersonalityButton").pressed.connect(_on_personality_button_pressed)
+	UISoundHelper.add_sounds_to_all_buttons(self)
 	_create_upgrade_definitions()
 	_build_hardware_tab()
 	_build_card_tab()
@@ -22,6 +23,10 @@ func _ready() -> void:
 	_load_pipeline()
 	$TabContainer.current_tab = 1
 	save_label.visible = false
+
+	var _dynamic_music = get_node("/root/DynamicMusic")
+	if _dynamic_music:
+		_dynamic_music.switch_to_lab_music()
 
 	var auto_save_timer = Timer.new()
 	auto_save_timer.wait_time = 30.0

@@ -53,6 +53,11 @@ func _refresh() -> void:
 	_build_upgrade_list()
 
 func _on_confirm_button_pressed() -> void:
+	var _proc_audio = get_node("/root/ProceduralAudio")
+	if _proc_audio:
+		_proc_audio.play_sfx_prestige()
+		await get_tree().create_timer(0.5).timeout
+
 	var _prestige_manager = get_node("/root/PrestigeManager")
 	var _gained = _prestige_manager.do_prestige()
 	prestige_confirmed.emit()

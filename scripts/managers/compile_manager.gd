@@ -125,6 +125,10 @@ func _finish_compile(card: AetherCard) -> void:
 	card.is_compiling = false
 	card.compile_progress = 1.0
 
+	var _proc_audio = get_node("/root/ProceduralAudio")
+	if _proc_audio:
+		_proc_audio.play_sfx_compile_complete()
+
 	# Tier yükselt
 	match card.tier:
 		AEnums.CardTier.TIER_1:

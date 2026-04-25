@@ -33,6 +33,8 @@ VersionBadge="*res://scripts/ui/version_badge.gd"
 DungeonScaler="*res://scripts/managers/dungeon_scaler.gd"
 CompileManager="*res://scripts/managers/compile_manager.gd"
 GolemManager="*res://scripts/managers/golem_manager.gd"
+ProceduralAudio="*res://scripts/managers/procedural_audio.gd"
+DynamicMusic="*res://scripts/managers/dynamic_music.gd"
 
 [display]
 

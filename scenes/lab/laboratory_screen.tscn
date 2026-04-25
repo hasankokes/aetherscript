@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://53lw2aqf130i" path="res://scripts/lab/laboratory_screen.gd" id="1_jksaa"]
 [ext_resource type="PackedScene" uid="uid://brbovcottvq6e" path="res://scenes/ui/pipeline_bar.tscn" id="2_gim5q"]
+[ext_resource type="PackedScene" uid="uid://dje8xywmd3xwl" path="res://scenes/ui/hud_menu_button.tscn" id="3_s3tbe"]
 
 [node name="LaboratoryScreen" type="Control" unique_id=595323939]
 layout_mode = 3
@@ -179,3 +180,11 @@ text = "⚔️  ZİNDANA GÖNDER"
 unique_name_in_owner = true
 visible = false
 layout_mode = 0
+
+[node name="HudMenuButton" parent="." unique_id=1697492862 instance=ExtResource("3_s3tbe")]
+layout_mode = 0
+offset_left = 430.0
+offset_top = 10.0
+offset_right = 438.0
+offset_bottom = 18.0
+grow_horizontal = 0

@@ -18,6 +18,9 @@ func _ready() -> void:
 	%StartButton.pressed.connect(_on_start_pressed)
 	eb.run_ended.connect(_on_run_ended)
 
+	_start_combat_music()
+	UISoundHelper.add_sounds_to_all_buttons(self)
+
 	# Test düşmanı oluştur
 	var test_enemy_data = EnemyData.new()
 	test_enemy_data.enemy_name = "Test Goblin"
@@ -93,11 +96,37 @@ func _on_enemy_attack_pressed() -> void:
 	_combat_manager.golem_take_damage(15.0)
 	_update_hp_display()
 
+func _start_combat_music() -> void:
+	var _player_inv = get_node("/root/PlayerInventory")
+	var _dynamic_music = get_node("/root/DynamicMusic")
+	if not _dynamic_music: return
+
+	# Pipeline'daki dominant elementi hesapla
+	var element_counts: Dictionary = {}
+	for slot_index in _player_inv.pipeline_config:
+		var card = _player_inv.pipeline_config[slot_index]
+		if card.element != AEnums.ElementType.NEUTRAL:
+			var count = element_counts.get(card.element, 0)
+			element_counts[card.element] = count + 1
+
+	var dominant = AEnums.ElementType.NEUTRAL
+	var max_count = 0
+	for el in element_counts:
+		if element_counts[el] > max_count:
+			max_count = element_counts[el]
+			dominant = el
+
+	_dynamic_music.start_combat_music(dominant)
+
 func _on_run_ended(_floor_reached: int, _loot: Dictionary) -> void:
 	var _game_manager = get_node("/root/GameManager")
 	var _player_inv = get_node("/root/PlayerInventory")
 	var _event_bus = get_node("/root/EventBus")
 	var _save_system = get_node("/root/SaveSystem")
+	var _dynamic_music = get_node("/root/DynamicMusic")
+
+	if _dynamic_music:
+		_dynamic_music.stop_music()
 
 	var duration = (Time.get_ticks_msec() / 1000.0) - run_start_time
 	_game_manager.record_run(current_floor, duration)

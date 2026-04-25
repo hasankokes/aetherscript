@@ -55,6 +55,10 @@ func get_xp_progress(element: AEnums.ElementType) -> float:
 	return float(xp_in_level) / XP_PER_LEVEL
 
 func _on_level_up(element: AEnums.ElementType, new_level: int) -> void:
+	var _proc_audio = get_node("/root/ProceduralAudio")
+	if _proc_audio:
+		_proc_audio.play_sfx_level_up()
+	
 	print("LEVEL UP! Element: %s -> Level %d" % [
 		AEnums.ElementType.keys()[element], new_level])
 	_check_synergy_unlocks()

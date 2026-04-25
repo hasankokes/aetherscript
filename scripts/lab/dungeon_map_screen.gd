@@ -11,6 +11,7 @@ var current_floor: int = 1
 var total_floors: int  = 10
 
 func _ready() -> void:
+	UISoundHelper.add_sounds_to_all_buttons(self)
 	%BackButton.pressed.connect(_on_back_button_pressed)
 	
 	# Eğer oyun yeni başladıysa HP'yi doldur
